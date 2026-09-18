@@ -1,0 +1,980 @@
+/* 原始樣式依畫面隔離後合併；避免各頁通用選擇器互相覆蓋 */
+
+/* login｜login.css */
+body[data-view="login"]{
+  --color-navy: #123568;
+  --color-text: #5f7396;
+  --color-primary: #1672f3;
+  --color-primary-light: #5a94ff;
+  --color-border: #dfe8f4;
+  --color-surface: rgba(255, 255, 255, 0.94);
+  --shadow-card: 0 18px 45px rgba(56, 101, 164, 0.12);
+  --radius-card: 30px;
+  --radius-control: 18px;
+}body[data-view="login"] *{
+  box-sizing: border-box;
+}html:has(body[data-view="login"]){
+  min-width: 320px;
+  color: var(--color-navy);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  background: #f7fbff;
+}body[data-view="login"]{
+  min-height: 100vh;
+  margin: 0;
+}body[data-view="login"] button,body[data-view="login"] input{
+  font: inherit;
+}body[data-view="login"] button{
+  cursor: pointer;
+}body[data-view="login"] .login-page{
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  padding: 64px 24px 120px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 0 17%, rgba(187, 222, 255, 0.42) 0 48px, transparent 49px),
+    radial-gradient(circle at 100% 18%, rgba(255, 226, 192, 0.4) 0 58px, transparent 59px),
+    linear-gradient(150deg, #ffffff 0%, #f9fcff 48%, #f2f8ff 100%);
+}body[data-view="login"] .login-brand,body[data-view="login"] .login-panel{
+  position: relative;
+  z-index: 1;
+}body[data-view="login"] .login-brand{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}body[data-view="login"] .brand-mark{
+  position: relative;
+  width: 76px;
+  height: 66px;
+  margin-bottom: 20px;
+}body[data-view="login"] .brand-mark__person{
+  position: absolute;
+  display: block;
+}body[data-view="login"] .brand-mark__person::before{
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+}body[data-view="login"] .brand-mark__person--primary{
+  bottom: 0;
+  left: 7px;
+  width: 36px;
+  height: 42px;
+  border-radius: 19px 19px 8px 8px;
+  background: linear-gradient(145deg, #3f91ff, #1971ec);
+}body[data-view="login"] .brand-mark__person--primary::before{
+  top: -24px;
+  left: 7px;
+  width: 27px;
+  height: 27px;
+  background: #2f82f5;
+}body[data-view="login"] .brand-mark__person--secondary{
+  right: 4px;
+  bottom: 0;
+  width: 32px;
+  height: 34px;
+  border-radius: 17px 17px 8px 8px;
+  background: linear-gradient(145deg, #91dfca, #63cbb0);
+}body[data-view="login"] .brand-mark__person--secondary::before{
+  top: -19px;
+  left: 6px;
+  width: 22px;
+  height: 22px;
+  background: #ffc95b;
+}body[data-view="login"] .brand-mark__accent{
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  width: 17px;
+  height: 8px;
+  border-radius: 10px 10px 3px 3px;
+  background: #fff;
+}body[data-view="login"] .login-brand h1{
+  margin: 0;
+  font-size: clamp(2rem, 9vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+}body[data-view="login"] .login-brand p{
+  margin: 12px 0 0;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}body[data-view="login"] .login-brand p[lang="en"]{
+  margin-top: 8px;
+  font-size: clamp(1rem, 4.6vw, 1.35rem);
+  letter-spacing: 0.01em;
+}body[data-view="login"] .maritime-scene{
+  position: relative;
+  width: min(100vw, 520px);
+  height: 150px;
+  margin: 26px -24px -22px;
+  overflow: hidden;
+  background:
+    linear-gradient(170deg, transparent 57%, rgba(201, 227, 255, 0.55) 58% 67%, transparent 68%),
+    linear-gradient(8deg, transparent 64%, rgba(222, 238, 255, 0.72) 65% 78%, transparent 79%),
+    linear-gradient(to bottom, transparent 62%, rgba(188, 220, 251, 0.42));
+}body[data-view="login"] .maritime-scene::after{
+  position: absolute;
+  right: -10%;
+  bottom: 10px;
+  width: 55%;
+  height: 18px;
+  content: "";
+  border-radius: 50%;
+  background: rgba(117, 182, 244, 0.22);
+  filter: blur(7px);
+}body[data-view="login"] .maritime-scene__lighthouse{
+  position: absolute;
+  bottom: 24px;
+  left: 11%;
+  width: 25px;
+  height: 78px;
+  clip-path: polygon(34% 0, 66% 0, 100% 100%, 0 100%);
+  background: linear-gradient(to right, #bedcff, #edf7ff 45%, #9ec9fa);
+  opacity: 0.8;
+}body[data-view="login"] .maritime-scene__ship{
+  position: absolute;
+  right: 8%;
+  bottom: 34px;
+  width: 112px;
+  height: 38px;
+  clip-path: polygon(0 20%, 100% 0, 84% 77%, 25% 100%, 8% 68%);
+  background: linear-gradient(145deg, #83b9e9, #377ab8);
+  opacity: 0.78;
+}body[data-view="login"] .login-panel{
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: 32px 24px;
+  border: 1px solid rgba(227, 237, 248, 0.9);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}body[data-view="login"] .login-panel__header{
+  margin-bottom: 28px;
+  text-align: center;
+}body[data-view="login"] .login-panel__header h2{
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+}body[data-view="login"] .login-panel__header h2::after{
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin: 14px auto 16px;
+  content: "";
+  border-radius: 99px;
+  background: var(--color-primary);
+}body[data-view="login"] .login-panel__header p{
+  margin: 0;
+  color: var(--color-text);
+}body[data-view="login"] .login-form{
+  display: grid;
+  gap: 20px;
+}body[data-view="login"] .form-field > label{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}body[data-view="login"] .form-field__control{
+  position: relative;
+  display: flex;
+  align-items: center;
+}body[data-view="login"] .form-field__control input{
+  width: 100%;
+  min-height: 64px;
+  padding: 0 54px;
+  color: var(--color-navy);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  outline: none;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: inset 0 1px 2px rgba(70, 111, 164, 0.04);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}body[data-view="login"] .form-field__control input::placeholder{
+  color: #7d8da8;
+}body[data-view="login"] .form-field__control input:focus{
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 4px rgba(22, 114, 243, 0.1);
+}body[data-view="login"] .form-field__icon{
+  position: absolute;
+  left: 20px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+}body[data-view="login"] .form-field__icon::after{
+  position: absolute;
+  bottom: -10px;
+  left: -5px;
+  width: 26px;
+  height: 12px;
+  content: "";
+  border: 2px solid var(--color-primary);
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+}body[data-view="login"] .form-field:nth-of-type(2) .form-field__icon{
+  top: 24px;
+  width: 22px;
+  height: 18px;
+  border-radius: 4px;
+}body[data-view="login"] .form-field:nth-of-type(2) .form-field__icon::before{
+  position: absolute;
+  top: -11px;
+  left: 4px;
+  width: 10px;
+  height: 10px;
+  content: "";
+  border: 2px solid var(--color-primary);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+}body[data-view="login"] .form-field:nth-of-type(2) .form-field__icon::after{
+  display: none;
+}body[data-view="login"] .password-toggle{
+  position: absolute;
+  right: 12px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  place-items: center;
+  color: #7788a4;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}body[data-view="login"] .password-toggle span{
+  width: 23px;
+  height: 15px;
+  border: 2px solid currentColor;
+  border-radius: 50% / 60%;
+}body[data-view="login"] .password-toggle span::after{
+  display: block;
+  width: 2px;
+  height: 27px;
+  margin: -7px auto 0;
+  content: "";
+  background: currentColor;
+  transform: rotate(-45deg);
+}body[data-view="login"] .password-toggle:focus-visible,body[data-view="login"] .login-form__submit:focus-visible{
+  outline: 3px solid rgba(22, 114, 243, 0.3);
+  outline-offset: 3px;
+}body[data-view="login"] .login-form__message{
+  min-height: 1.4em;
+  margin: -7px 4px -9px;
+  color: #d94b4b;
+  font-size: 0.9rem;
+}body[data-view="login"] .login-form__message:empty{
+  display: none;
+}body[data-view="login"] .login-form__submit{
+  min-height: 64px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: linear-gradient(110deg, var(--color-primary-light), var(--color-primary));
+  box-shadow: 0 10px 22px rgba(22, 114, 243, 0.24);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}body[data-view="login"] .login-form__submit:hover{
+  box-shadow: 0 13px 26px rgba(22, 114, 243, 0.3);
+  transform: translateY(-1px);
+}body[data-view="login"] .login-form__submit:active{
+  box-shadow: 0 6px 15px rgba(22, 114, 243, 0.22);
+  transform: translateY(1px);
+}body[data-view="login"] .login-page__waves{
+  position: absolute;
+  right: -10%;
+  bottom: -70px;
+  left: -10%;
+  height: 170px;
+  border-radius: 50% 50% 0 0 / 35% 35% 0 0;
+  background:
+    radial-gradient(ellipse at 30% 0, rgba(215, 235, 255, 0.8), transparent 60%),
+    linear-gradient(to bottom, rgba(231, 243, 255, 0.84), rgba(212, 233, 255, 0.58));
+  transform: rotate(-2deg);
+}
+
+@media (min-width: 1100px) {body[data-view="login"] .login-page{
+    align-content: center;
+    grid-template-columns: minmax(330px, 1fr) minmax(420px, 560px);
+    gap: clamp(48px, 8vw, 120px);
+    padding: 64px clamp(48px, 8vw, 140px);
+  }body[data-view="login"] .login-brand{
+    align-self: center;
+  }body[data-view="login"] .login-brand h1{
+    font-size: clamp(2.3rem, 4vw, 4rem);
+  }body[data-view="login"] .maritime-scene{
+    width: min(48vw, 680px);
+    height: 220px;
+    margin-bottom: 0;
+  }body[data-view="login"] .login-panel{
+    align-self: center;
+    padding: 48px;
+  }
+}body[data-view="login"] .demo-notice{
+  margin: 22px 0 0;
+  padding: 12px 14px;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  border-radius: 12px;
+  background: #edf5ff;
+}body[data-view="login"] .login-form__submit:disabled{ cursor: wait; opacity: 0.65; }body[data-view="login"] .form-field__control input[aria-invalid="true"]{ border-color: #d94b4b; }body[data-view="login"] .password-toggle[aria-pressed="true"] span::after{ display: none; }
+
+@media (max-width: 390px) {body[data-view="login"] .login-page{
+    padding-right: 16px;
+    padding-left: 16px;
+  }body[data-view="login"] .login-panel{
+    padding: 28px 18px;
+  }body[data-view="login"] .form-field__control input{
+    padding-left: 50px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {body[data-view="login"] *,body[data-view="login"] *::before,body[data-view="login"] *::after{
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* login｜auth-theme.css */
+body[data-view="login"]{
+  --color-navy: #2f4054;
+  --color-text: #6f7c89;
+  --color-primary: #c7ae2f;
+  --color-primary-light: #eadb70;
+  --color-border: #dedfd7;
+  --color-surface: rgba(255, 255, 255, 0.96);
+  --shadow-card: 0 18px 45px rgba(55, 67, 75, 0.1);
+}html:has(body[data-view="login"]){ background: #f6f7f2; }body[data-view="login"] .login-page,body[data-view="login"] .change-page{
+  background:
+    radial-gradient(circle at 8% 12%, rgba(239, 225, 125, 0.2) 0 52px, transparent 53px),
+    radial-gradient(circle at 96% 18%, rgba(220, 211, 143, 0.16) 0 64px, transparent 65px),
+    linear-gradient(150deg, #ffffff 0%, #fafbf7 48%, #f2f4ed 100%);
+}body[data-view="login"] .login-panel{
+  border-color: rgba(222, 223, 215, 0.95);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}body[data-view="login"] .login-panel__header h2::after{ background: #d2bc3f; }body[data-view="login"] .brand-mark__person--primary{ background: linear-gradient(145deg, #eadb70, #cbb332); }body[data-view="login"] .brand-mark__person--primary::before{ background: #d9c54d; }body[data-view="login"] .brand-mark__person--secondary{ background: linear-gradient(145deg, #a8b9a2, #7f9a7e); }body[data-view="login"] .brand-mark__person--secondary::before{ background: #eee08a; }body[data-view="login"] .form-field__control input{
+  color: #2f4054;
+  border-color: #dedfd7;
+  background: #fdfefb;
+  box-shadow: inset 0 1px 2px rgba(55, 67, 75, 0.04);
+}body[data-view="login"] .form-field__control input::placeholder{ color: #89939d; }body[data-view="login"] .form-field__control input:focus{
+  border-color: #cbb536;
+  box-shadow: 0 0 0 4px rgba(216, 196, 79, 0.16);
+}body[data-view="login"] .form-field__icon,body[data-view="login"] .form-field__icon::after,body[data-view="login"] .form-field:nth-of-type(2) .form-field__icon::before{ border-color: #b9a22a; }body[data-view="login"] .password-toggle{ color: #7d8792; }body[data-view="login"] .password-toggle:focus-visible,body[data-view="login"] .login-form__submit:focus-visible{ outline-color: rgba(199, 174, 47, 0.35); }body[data-view="login"] .login-form__submit{
+  color: #303b4a;
+  background: linear-gradient(110deg, #eadb70, #d2bb3f);
+  box-shadow: 0 10px 22px rgba(177, 153, 39, 0.2);
+}body[data-view="login"] .login-form__submit:hover{ box-shadow: 0 13px 26px rgba(177, 153, 39, 0.25); }body[data-view="login"] .login-form__submit:active{ box-shadow: 0 6px 15px rgba(177, 153, 39, 0.18); }body[data-view="login"] .demo-notice,body[data-view="login"] .employee-label{ color: #65727f; background: #faf8df; }body[data-view="login"] .step-label,body[data-view="login"] .back-login{ color: #8d7b20; }body[data-view="login"] .maritime-scene{
+  background:
+    linear-gradient(170deg, transparent 57%, rgba(235, 229, 174, 0.52) 58% 67%, transparent 68%),
+    linear-gradient(8deg, transparent 64%, rgba(239, 236, 206, 0.72) 65% 78%, transparent 79%),
+    linear-gradient(to bottom, transparent 62%, rgba(229, 225, 186, 0.38));
+}body[data-view="login"] .maritime-scene::after{ background: rgba(194, 181, 90, 0.16); }body[data-view="login"] .maritime-scene__lighthouse{ background: linear-gradient(to right, #eee6a9, #fffdf0 45%, #d9ca68); }body[data-view="login"] .maritime-scene__ship{ background: linear-gradient(145deg, #aeb59c, #697b6d); }body[data-view="login"] .login-page__waves{
+  background:
+    radial-gradient(ellipse at 30% 0, rgba(241, 235, 185, 0.72), transparent 60%),
+    linear-gradient(to bottom, rgba(247, 244, 215, 0.8), rgba(233, 231, 200, 0.55));
+}
+
+
+/* login｜system-theme.css */
+body[data-view="login"]{
+  --navy: #3f4650;
+  --blue: #9a8264;
+  --orange: #a9825d;
+  --green: #687d6c;
+  --purple: #827467;
+  --soft-text: #74787d;
+  --text-soft: #74787d;
+  --border: #ded4c5;
+  --surface: rgba(255, 253, 249, 0.97);
+  --page: #f7f3ed;
+  --color-navy: #3f4650;
+  --color-text: #74787d;
+  --color-primary: #a58a69;
+  --color-primary-light: #c7b296;
+  --color-border: #ded4c5;
+  --color-surface: rgba(255, 253, 249, 0.97);
+  --theme-main: #efe7da;
+  --theme-light: #f8f4ee;
+  --theme-card: #fffdfa;
+  --theme-line: #d9cbb8;
+  --theme-accent: #92775a;
+  --theme-text: #3f4650;
+  --shadow-card: 0 12px 34px rgba(78, 67, 55, 0.09);
+}html:has(body[data-view="login"]){ color: var(--theme-text); background: var(--theme-light); }body[data-view="login"]{
+  background: radial-gradient(circle at 92% 5%, rgba(239,231,218,.78), transparent 24rem),
+    linear-gradient(155deg, #fcfaf7 0%, #f7f3ed 58%, #f2ece3 100%) !important;
+}body[data-view="login"] .admin-sidebar{
+  border-color: var(--theme-line) !important;
+  background: linear-gradient(180deg, #fffdfa 0%, #f5efe6 100%) !important;
+}body[data-view="login"] .admin-sidebar header::before{
+  color: #fff !important;
+  background: linear-gradient(145deg, #b29a7d, #8e7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="login"] .admin-sidebar nav a{ color: #6f6d6a !important; }body[data-view="login"] .admin-sidebar nav a:hover{ color: #745d45 !important; background: #f5eee4 !important; }body[data-view="login"] .admin-sidebar nav a[aria-current="page"]{
+  color: #654f39 !important;
+  border-color: #d4c3ae !important;
+  background: #efe7da !important;
+  box-shadow: inset 3px 0 #a58a69 !important;
+}body[data-view="login"] .login-page,body[data-view="login"] .change-page{
+  background: radial-gradient(circle at 8% 12%, rgba(239,231,218,.9) 0 55px, transparent 56px),
+    radial-gradient(circle at 96% 18%, rgba(224,211,193,.48) 0 65px, transparent 66px),
+    linear-gradient(150deg, #fff 0%, #faf7f2 48%, #f2ece3 100%) !important;
+}body[data-view="login"] .brand-mark__person--primary{ background: linear-gradient(145deg, #c3ad91, #92775a) !important; }body[data-view="login"] .brand-mark__person--primary::before{ background: #a58a69 !important; }body[data-view="login"] .brand-mark__person--secondary{ background: linear-gradient(145deg, #bbb6aa, #8f9488) !important; }body[data-view="login"] .brand-mark__person--secondary::before{ background: #efe7da !important; }body[data-view="login"] .login-panel,body[data-view="login"] .detail-panel,body[data-view="login"] .progress-card,body[data-view="login"] .certification-card,body[data-view="login"] .pending-card,body[data-view="login"] .question-card,body[data-view="login"] .employee-card,body[data-view="login"] .person-summary,body[data-view="login"] .person-profile,body[data-view="login"] .question-bank-filter,body[data-view="login"] .question-bank-intro,body[data-view="login"] .assessment-search,body[data-view="login"] .assessment-note,body[data-view="login"] .evaluation-form,body[data-view="login"] .assessment-form,body[data-view="login"] .review-reminder,body[data-view="login"] .page-notice{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="login"] .login-panel__header h2::after{ background: #a58a69 !important; }body[data-view="login"] .form-field__control input,body[data-view="login"] .personnel-filter input,body[data-view="login"] .personnel-filter select,body[data-view="login"] .review-filter input,body[data-view="login"] .review-filter select,body[data-view="login"] .certification-tools input,body[data-view="login"] input,body[data-view="login"] select,body[data-view="login"] textarea{
+  color: var(--theme-text) !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="login"] input:focus,body[data-view="login"] select:focus,body[data-view="login"] textarea:focus{
+  border-color: #a58a69 !important;
+  box-shadow: 0 0 0 3px rgba(165,138,105,.15) !important;
+}body[data-view="login"] .form-field__icon,body[data-view="login"] .form-field__icon::after,body[data-view="login"] .form-field:nth-of-type(2) .form-field__icon::before{ border-color: #92775a !important; }body[data-view="login"] .login-form__submit,body[data-view="login"] .primary-action,body[data-view="login"] .pending-review > header button,body[data-view="login"] .personnel-filter button:last-child,body[data-view="login"] .review-actions button:not(.danger),body[data-view="login"] .form-actions button:last-child{
+  color: #fff !important;
+  border-color: #92775a !important;
+  background: linear-gradient(135deg, #b39b7f, #8f7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="login"] .demo-notice,body[data-view="login"] .employee-label,body[data-view="login"] .demo-note,body[data-view="login"] .question-reminder,body[data-view="login"] .record-badge,body[data-view="login"] .assessment-note,body[data-view="login"] .page-notice{ color: #685d51 !important; background: #efe7da !important; }body[data-view="login"] .step-label,body[data-view="login"] .back-login,body[data-view="login"] .detail-link,body[data-view="login"] .detail-header a{ color: #80684f !important; }body[data-view="login"] .dashboard-summary article,body[data-view="login"] .pending-review,body[data-view="login"] .personnel-filter,body[data-view="login"] .personnel-list,body[data-view="login"] .certification-panel,body[data-view="login"] .review-filter,body[data-view="login"] .review-panel,body[data-view="login"] .profile-card,body[data-view="login"] .detail-tabs,body[data-view="login"] .detail-content,body[data-view="login"] .allowance,body[data-view="login"] .status-summary,body[data-view="login"] .certified-list,body[data-view="login"] .progress-list,body[data-view="login"] .pending-list,body[data-view="login"] .question-list,body[data-view="login"] .employee-list{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="login"] .dashboard-summary article::before{ background: #b49b7d !important; }body[data-view="login"] .dashboard-summary article:last-child::before{ background: #978a7a !important; }body[data-view="login"] .dashboard-summary a,body[data-view="login"] td a,body[data-view="login"] .detail-button,body[data-view="login"] .review-button,body[data-view="login"] .secondary-action,body[data-view="login"] .certification-tools button,body[data-view="login"] .review-filter button,body[data-view="login"] .personnel-filter .export-button{
+  color: #745d45 !important;
+  border-color: #b9a284 !important;
+  background: #fffdfa !important;
+}body[data-view="login"] th{ color: #676b70 !important; background: #efe7da !important; }body[data-view="login"] td{ border-color: #e5dbce !important; }body[data-view="login"] tbody tr:hover td{ background: #faf5ee !important; }body[data-view="login"] .status-tabs button,body[data-view="login"] .certification-tabs button,body[data-view="login"] .assessment-tabs button{
+  color: #6c6258 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="login"] .status-tabs button[aria-selected="true"],body[data-view="login"] .certification-tabs button[aria-selected="true"],body[data-view="login"] .assessment-tabs button[aria-selected="true"]{
+  color: #654f39 !important;
+  border-color: #b9a284 !important;
+  background: #efe7da !important;
+}body[data-view="login"] .bottom-nav{
+  border-color: var(--theme-line) !important;
+  background: rgba(255,253,250,.96) !important;
+  box-shadow: 0 -8px 24px rgba(78,67,55,.08) !important;
+}body[data-view="login"] .bottom-nav a{ color: #7b7b79 !important; }body[data-view="login"] .bottom-nav a[aria-current="page"],body[data-view="login"] .bottom-nav a.active{ color: #80684f !important; }body[data-view="login"] .page-header button,body[data-view="login"] .home-header button,body[data-view="login"] .home-header__actions button{
+  color: #745d45 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="login"] .status.active,body[data-view="login"] .pass{ color: #59705f !important; background: #edf2ed !important; }body[data-view="login"] .status.discontinued{ color: #737373 !important; background: #f0ede9 !important; }body[data-view="login"] .review-actions .danger{ color: #9b5555 !important; border-color: #d2a4a4 !important; background: #fffafa !important; }body[data-view="login"] .empty-message{ color: #77736f !important; border-color: var(--theme-line) !important; background: #faf6f0 !important; }body[data-view="login"] dialog{ border-color: var(--theme-line) !important; background: #fffdfa !important; }body[data-view="login"] dialog::backdrop{ background: rgba(63,70,80,.3) !important; }body[data-view="login"] .maritime-scene{
+  background: linear-gradient(170deg,transparent 57%,rgba(226,215,200,.6) 58% 67%,transparent 68%),
+    linear-gradient(8deg,transparent 64%,rgba(239,231,218,.78) 65% 78%,transparent 79%),
+    linear-gradient(to bottom,transparent 62%,rgba(218,204,186,.42)) !important;
+}body[data-view="login"] .maritime-scene__lighthouse{ background: linear-gradient(to right,#d9cbb8,#fffdfa 45%,#baa383) !important; }body[data-view="login"] .maritime-scene__ship{ background: linear-gradient(145deg,#aaa397,#6f756f) !important; }body[data-view="login"] .login-page__waves{
+  background: radial-gradient(ellipse at 30% 0,rgba(239,231,218,.86),transparent 60%),
+    linear-gradient(to bottom,rgba(244,238,230,.9),rgba(222,211,196,.62)) !important;
+}
+
+@media (max-width: 620px) {body[data-view="login"] .admin-sidebar nav a{ background: #fffdfa !important; }body[data-view="login"] .admin-sidebar nav a[aria-current="page"]{ background: #efe7da !important; box-shadow: none !important; }body[data-view="login"] .pending-review tbody tr,body[data-view="login"] .personnel-list tbody tr,body[data-view="login"] .certification-panel tbody tr,body[data-view="login"] .review-panel tbody tr{
+    border-color: var(--theme-line) !important;
+    background: #fffdfa !important;
+  }
+}
+
+
+/* change-password｜login.css */
+body[data-view="change-password"]{
+  --color-navy: #123568;
+  --color-text: #5f7396;
+  --color-primary: #1672f3;
+  --color-primary-light: #5a94ff;
+  --color-border: #dfe8f4;
+  --color-surface: rgba(255, 255, 255, 0.94);
+  --shadow-card: 0 18px 45px rgba(56, 101, 164, 0.12);
+  --radius-card: 30px;
+  --radius-control: 18px;
+}body[data-view="change-password"] *{
+  box-sizing: border-box;
+}html:has(body[data-view="change-password"]){
+  min-width: 320px;
+  color: var(--color-navy);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  background: #f7fbff;
+}body[data-view="change-password"]{
+  min-height: 100vh;
+  margin: 0;
+}body[data-view="change-password"] button,body[data-view="change-password"] input{
+  font: inherit;
+}body[data-view="change-password"] button{
+  cursor: pointer;
+}body[data-view="change-password"] .login-page{
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  padding: 64px 24px 120px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 0 17%, rgba(187, 222, 255, 0.42) 0 48px, transparent 49px),
+    radial-gradient(circle at 100% 18%, rgba(255, 226, 192, 0.4) 0 58px, transparent 59px),
+    linear-gradient(150deg, #ffffff 0%, #f9fcff 48%, #f2f8ff 100%);
+}body[data-view="change-password"] .login-brand,body[data-view="change-password"] .login-panel{
+  position: relative;
+  z-index: 1;
+}body[data-view="change-password"] .login-brand{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}body[data-view="change-password"] .brand-mark{
+  position: relative;
+  width: 76px;
+  height: 66px;
+  margin-bottom: 20px;
+}body[data-view="change-password"] .brand-mark__person{
+  position: absolute;
+  display: block;
+}body[data-view="change-password"] .brand-mark__person::before{
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+}body[data-view="change-password"] .brand-mark__person--primary{
+  bottom: 0;
+  left: 7px;
+  width: 36px;
+  height: 42px;
+  border-radius: 19px 19px 8px 8px;
+  background: linear-gradient(145deg, #3f91ff, #1971ec);
+}body[data-view="change-password"] .brand-mark__person--primary::before{
+  top: -24px;
+  left: 7px;
+  width: 27px;
+  height: 27px;
+  background: #2f82f5;
+}body[data-view="change-password"] .brand-mark__person--secondary{
+  right: 4px;
+  bottom: 0;
+  width: 32px;
+  height: 34px;
+  border-radius: 17px 17px 8px 8px;
+  background: linear-gradient(145deg, #91dfca, #63cbb0);
+}body[data-view="change-password"] .brand-mark__person--secondary::before{
+  top: -19px;
+  left: 6px;
+  width: 22px;
+  height: 22px;
+  background: #ffc95b;
+}body[data-view="change-password"] .brand-mark__accent{
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  width: 17px;
+  height: 8px;
+  border-radius: 10px 10px 3px 3px;
+  background: #fff;
+}body[data-view="change-password"] .login-brand h1{
+  margin: 0;
+  font-size: clamp(2rem, 9vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+}body[data-view="change-password"] .login-brand p{
+  margin: 12px 0 0;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}body[data-view="change-password"] .login-brand p[lang="en"]{
+  margin-top: 8px;
+  font-size: clamp(1rem, 4.6vw, 1.35rem);
+  letter-spacing: 0.01em;
+}body[data-view="change-password"] .maritime-scene{
+  position: relative;
+  width: min(100vw, 520px);
+  height: 150px;
+  margin: 26px -24px -22px;
+  overflow: hidden;
+  background:
+    linear-gradient(170deg, transparent 57%, rgba(201, 227, 255, 0.55) 58% 67%, transparent 68%),
+    linear-gradient(8deg, transparent 64%, rgba(222, 238, 255, 0.72) 65% 78%, transparent 79%),
+    linear-gradient(to bottom, transparent 62%, rgba(188, 220, 251, 0.42));
+}body[data-view="change-password"] .maritime-scene::after{
+  position: absolute;
+  right: -10%;
+  bottom: 10px;
+  width: 55%;
+  height: 18px;
+  content: "";
+  border-radius: 50%;
+  background: rgba(117, 182, 244, 0.22);
+  filter: blur(7px);
+}body[data-view="change-password"] .maritime-scene__lighthouse{
+  position: absolute;
+  bottom: 24px;
+  left: 11%;
+  width: 25px;
+  height: 78px;
+  clip-path: polygon(34% 0, 66% 0, 100% 100%, 0 100%);
+  background: linear-gradient(to right, #bedcff, #edf7ff 45%, #9ec9fa);
+  opacity: 0.8;
+}body[data-view="change-password"] .maritime-scene__ship{
+  position: absolute;
+  right: 8%;
+  bottom: 34px;
+  width: 112px;
+  height: 38px;
+  clip-path: polygon(0 20%, 100% 0, 84% 77%, 25% 100%, 8% 68%);
+  background: linear-gradient(145deg, #83b9e9, #377ab8);
+  opacity: 0.78;
+}body[data-view="change-password"] .login-panel{
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: 32px 24px;
+  border: 1px solid rgba(227, 237, 248, 0.9);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}body[data-view="change-password"] .login-panel__header{
+  margin-bottom: 28px;
+  text-align: center;
+}body[data-view="change-password"] .login-panel__header h2{
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+}body[data-view="change-password"] .login-panel__header h2::after{
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin: 14px auto 16px;
+  content: "";
+  border-radius: 99px;
+  background: var(--color-primary);
+}body[data-view="change-password"] .login-panel__header p{
+  margin: 0;
+  color: var(--color-text);
+}body[data-view="change-password"] .login-form{
+  display: grid;
+  gap: 20px;
+}body[data-view="change-password"] .form-field > label{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}body[data-view="change-password"] .form-field__control{
+  position: relative;
+  display: flex;
+  align-items: center;
+}body[data-view="change-password"] .form-field__control input{
+  width: 100%;
+  min-height: 64px;
+  padding: 0 54px;
+  color: var(--color-navy);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  outline: none;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: inset 0 1px 2px rgba(70, 111, 164, 0.04);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}body[data-view="change-password"] .form-field__control input::placeholder{
+  color: #7d8da8;
+}body[data-view="change-password"] .form-field__control input:focus{
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 4px rgba(22, 114, 243, 0.1);
+}body[data-view="change-password"] .form-field__icon{
+  position: absolute;
+  left: 20px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+}body[data-view="change-password"] .form-field__icon::after{
+  position: absolute;
+  bottom: -10px;
+  left: -5px;
+  width: 26px;
+  height: 12px;
+  content: "";
+  border: 2px solid var(--color-primary);
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+}body[data-view="change-password"] .form-field:nth-of-type(2) .form-field__icon{
+  top: 24px;
+  width: 22px;
+  height: 18px;
+  border-radius: 4px;
+}body[data-view="change-password"] .form-field:nth-of-type(2) .form-field__icon::before{
+  position: absolute;
+  top: -11px;
+  left: 4px;
+  width: 10px;
+  height: 10px;
+  content: "";
+  border: 2px solid var(--color-primary);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+}body[data-view="change-password"] .form-field:nth-of-type(2) .form-field__icon::after{
+  display: none;
+}body[data-view="change-password"] .password-toggle{
+  position: absolute;
+  right: 12px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  place-items: center;
+  color: #7788a4;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}body[data-view="change-password"] .password-toggle span{
+  width: 23px;
+  height: 15px;
+  border: 2px solid currentColor;
+  border-radius: 50% / 60%;
+}body[data-view="change-password"] .password-toggle span::after{
+  display: block;
+  width: 2px;
+  height: 27px;
+  margin: -7px auto 0;
+  content: "";
+  background: currentColor;
+  transform: rotate(-45deg);
+}body[data-view="change-password"] .password-toggle:focus-visible,body[data-view="change-password"] .login-form__submit:focus-visible{
+  outline: 3px solid rgba(22, 114, 243, 0.3);
+  outline-offset: 3px;
+}body[data-view="change-password"] .login-form__message{
+  min-height: 1.4em;
+  margin: -7px 4px -9px;
+  color: #d94b4b;
+  font-size: 0.9rem;
+}body[data-view="change-password"] .login-form__message:empty{
+  display: none;
+}body[data-view="change-password"] .login-form__submit{
+  min-height: 64px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: linear-gradient(110deg, var(--color-primary-light), var(--color-primary));
+  box-shadow: 0 10px 22px rgba(22, 114, 243, 0.24);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}body[data-view="change-password"] .login-form__submit:hover{
+  box-shadow: 0 13px 26px rgba(22, 114, 243, 0.3);
+  transform: translateY(-1px);
+}body[data-view="change-password"] .login-form__submit:active{
+  box-shadow: 0 6px 15px rgba(22, 114, 243, 0.22);
+  transform: translateY(1px);
+}body[data-view="change-password"] .login-page__waves{
+  position: absolute;
+  right: -10%;
+  bottom: -70px;
+  left: -10%;
+  height: 170px;
+  border-radius: 50% 50% 0 0 / 35% 35% 0 0;
+  background:
+    radial-gradient(ellipse at 30% 0, rgba(215, 235, 255, 0.8), transparent 60%),
+    linear-gradient(to bottom, rgba(231, 243, 255, 0.84), rgba(212, 233, 255, 0.58));
+  transform: rotate(-2deg);
+}
+
+@media (min-width: 1100px) {body[data-view="change-password"] .login-page{
+    align-content: center;
+    grid-template-columns: minmax(330px, 1fr) minmax(420px, 560px);
+    gap: clamp(48px, 8vw, 120px);
+    padding: 64px clamp(48px, 8vw, 140px);
+  }body[data-view="change-password"] .login-brand{
+    align-self: center;
+  }body[data-view="change-password"] .login-brand h1{
+    font-size: clamp(2.3rem, 4vw, 4rem);
+  }body[data-view="change-password"] .maritime-scene{
+    width: min(48vw, 680px);
+    height: 220px;
+    margin-bottom: 0;
+  }body[data-view="change-password"] .login-panel{
+    align-self: center;
+    padding: 48px;
+  }
+}body[data-view="change-password"] .demo-notice{
+  margin: 22px 0 0;
+  padding: 12px 14px;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  border-radius: 12px;
+  background: #edf5ff;
+}body[data-view="change-password"] .login-form__submit:disabled{ cursor: wait; opacity: 0.65; }body[data-view="change-password"] .form-field__control input[aria-invalid="true"]{ border-color: #d94b4b; }body[data-view="change-password"] .password-toggle[aria-pressed="true"] span::after{ display: none; }
+
+@media (max-width: 390px) {body[data-view="change-password"] .login-page{
+    padding-right: 16px;
+    padding-left: 16px;
+  }body[data-view="change-password"] .login-panel{
+    padding: 28px 18px;
+  }body[data-view="change-password"] .form-field__control input{
+    padding-left: 50px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {body[data-view="change-password"] *,body[data-view="change-password"] *::before,body[data-view="change-password"] *::after{
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* change-password｜change-password.css */
+body[data-view="change-password"] .change-page{ min-height: 100svh; display: grid; align-items: center; padding: 32px 16px; background: linear-gradient(150deg, #fff, #edf6ff); }body[data-view="change-password"] .change-page .login-panel{ padding: 28px 22px; }body[data-view="change-password"] .change-page h1{ margin: 12px 0; font-size: clamp(1.5rem, 5vw, 2rem); }body[data-view="change-password"] .change-page .step-label{ color: var(--color-primary); font-size: .85rem; }body[data-view="change-password"] .employee-label{ margin-bottom: 24px; padding: 12px; border-radius: 10px; background: #edf5ff; }body[data-view="change-password"] .password-field > label{ display: block; margin-bottom: 8px; font-weight: 700; }body[data-view="change-password"] .password-field input{ padding-left: 16px; }body[data-view="change-password"] .password-rules{ margin: -8px 0 0; padding-left: 22px; color: var(--color-text); font-size: .9rem; line-height: 1.8; }body[data-view="change-password"] .back-login{ padding: 10px; color: var(--color-primary); background: transparent; border: 0; border-radius: 8px; }
+@media (min-width: 600px) {body[data-view="change-password"] .change-page .login-panel{ padding: 36px 40px; } }
+
+
+/* change-password｜auth-theme.css */
+body[data-view="change-password"]{
+  --color-navy: #2f4054;
+  --color-text: #6f7c89;
+  --color-primary: #c7ae2f;
+  --color-primary-light: #eadb70;
+  --color-border: #dedfd7;
+  --color-surface: rgba(255, 255, 255, 0.96);
+  --shadow-card: 0 18px 45px rgba(55, 67, 75, 0.1);
+}html:has(body[data-view="change-password"]){ background: #f6f7f2; }body[data-view="change-password"] .login-page,body[data-view="change-password"] .change-page{
+  background:
+    radial-gradient(circle at 8% 12%, rgba(239, 225, 125, 0.2) 0 52px, transparent 53px),
+    radial-gradient(circle at 96% 18%, rgba(220, 211, 143, 0.16) 0 64px, transparent 65px),
+    linear-gradient(150deg, #ffffff 0%, #fafbf7 48%, #f2f4ed 100%);
+}body[data-view="change-password"] .login-panel{
+  border-color: rgba(222, 223, 215, 0.95);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}body[data-view="change-password"] .login-panel__header h2::after{ background: #d2bc3f; }body[data-view="change-password"] .brand-mark__person--primary{ background: linear-gradient(145deg, #eadb70, #cbb332); }body[data-view="change-password"] .brand-mark__person--primary::before{ background: #d9c54d; }body[data-view="change-password"] .brand-mark__person--secondary{ background: linear-gradient(145deg, #a8b9a2, #7f9a7e); }body[data-view="change-password"] .brand-mark__person--secondary::before{ background: #eee08a; }body[data-view="change-password"] .form-field__control input{
+  color: #2f4054;
+  border-color: #dedfd7;
+  background: #fdfefb;
+  box-shadow: inset 0 1px 2px rgba(55, 67, 75, 0.04);
+}body[data-view="change-password"] .form-field__control input::placeholder{ color: #89939d; }body[data-view="change-password"] .form-field__control input:focus{
+  border-color: #cbb536;
+  box-shadow: 0 0 0 4px rgba(216, 196, 79, 0.16);
+}body[data-view="change-password"] .form-field__icon,body[data-view="change-password"] .form-field__icon::after,body[data-view="change-password"] .form-field:nth-of-type(2) .form-field__icon::before{ border-color: #b9a22a; }body[data-view="change-password"] .password-toggle{ color: #7d8792; }body[data-view="change-password"] .password-toggle:focus-visible,body[data-view="change-password"] .login-form__submit:focus-visible{ outline-color: rgba(199, 174, 47, 0.35); }body[data-view="change-password"] .login-form__submit{
+  color: #303b4a;
+  background: linear-gradient(110deg, #eadb70, #d2bb3f);
+  box-shadow: 0 10px 22px rgba(177, 153, 39, 0.2);
+}body[data-view="change-password"] .login-form__submit:hover{ box-shadow: 0 13px 26px rgba(177, 153, 39, 0.25); }body[data-view="change-password"] .login-form__submit:active{ box-shadow: 0 6px 15px rgba(177, 153, 39, 0.18); }body[data-view="change-password"] .demo-notice,body[data-view="change-password"] .employee-label{ color: #65727f; background: #faf8df; }body[data-view="change-password"] .step-label,body[data-view="change-password"] .back-login{ color: #8d7b20; }body[data-view="change-password"] .maritime-scene{
+  background:
+    linear-gradient(170deg, transparent 57%, rgba(235, 229, 174, 0.52) 58% 67%, transparent 68%),
+    linear-gradient(8deg, transparent 64%, rgba(239, 236, 206, 0.72) 65% 78%, transparent 79%),
+    linear-gradient(to bottom, transparent 62%, rgba(229, 225, 186, 0.38));
+}body[data-view="change-password"] .maritime-scene::after{ background: rgba(194, 181, 90, 0.16); }body[data-view="change-password"] .maritime-scene__lighthouse{ background: linear-gradient(to right, #eee6a9, #fffdf0 45%, #d9ca68); }body[data-view="change-password"] .maritime-scene__ship{ background: linear-gradient(145deg, #aeb59c, #697b6d); }body[data-view="change-password"] .login-page__waves{
+  background:
+    radial-gradient(ellipse at 30% 0, rgba(241, 235, 185, 0.72), transparent 60%),
+    linear-gradient(to bottom, rgba(247, 244, 215, 0.8), rgba(233, 231, 200, 0.55));
+}
+
+
+/* change-password｜system-theme.css */
+body[data-view="change-password"]{
+  --navy: #3f4650;
+  --blue: #9a8264;
+  --orange: #a9825d;
+  --green: #687d6c;
+  --purple: #827467;
+  --soft-text: #74787d;
+  --text-soft: #74787d;
+  --border: #ded4c5;
+  --surface: rgba(255, 253, 249, 0.97);
+  --page: #f7f3ed;
+  --color-navy: #3f4650;
+  --color-text: #74787d;
+  --color-primary: #a58a69;
+  --color-primary-light: #c7b296;
+  --color-border: #ded4c5;
+  --color-surface: rgba(255, 253, 249, 0.97);
+  --theme-main: #efe7da;
+  --theme-light: #f8f4ee;
+  --theme-card: #fffdfa;
+  --theme-line: #d9cbb8;
+  --theme-accent: #92775a;
+  --theme-text: #3f4650;
+  --shadow-card: 0 12px 34px rgba(78, 67, 55, 0.09);
+}html:has(body[data-view="change-password"]){ color: var(--theme-text); background: var(--theme-light); }body[data-view="change-password"]{
+  background: radial-gradient(circle at 92% 5%, rgba(239,231,218,.78), transparent 24rem),
+    linear-gradient(155deg, #fcfaf7 0%, #f7f3ed 58%, #f2ece3 100%) !important;
+}body[data-view="change-password"] .admin-sidebar{
+  border-color: var(--theme-line) !important;
+  background: linear-gradient(180deg, #fffdfa 0%, #f5efe6 100%) !important;
+}body[data-view="change-password"] .admin-sidebar header::before{
+  color: #fff !important;
+  background: linear-gradient(145deg, #b29a7d, #8e7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="change-password"] .admin-sidebar nav a{ color: #6f6d6a !important; }body[data-view="change-password"] .admin-sidebar nav a:hover{ color: #745d45 !important; background: #f5eee4 !important; }body[data-view="change-password"] .admin-sidebar nav a[aria-current="page"]{
+  color: #654f39 !important;
+  border-color: #d4c3ae !important;
+  background: #efe7da !important;
+  box-shadow: inset 3px 0 #a58a69 !important;
+}body[data-view="change-password"] .login-page,body[data-view="change-password"] .change-page{
+  background: radial-gradient(circle at 8% 12%, rgba(239,231,218,.9) 0 55px, transparent 56px),
+    radial-gradient(circle at 96% 18%, rgba(224,211,193,.48) 0 65px, transparent 66px),
+    linear-gradient(150deg, #fff 0%, #faf7f2 48%, #f2ece3 100%) !important;
+}body[data-view="change-password"] .brand-mark__person--primary{ background: linear-gradient(145deg, #c3ad91, #92775a) !important; }body[data-view="change-password"] .brand-mark__person--primary::before{ background: #a58a69 !important; }body[data-view="change-password"] .brand-mark__person--secondary{ background: linear-gradient(145deg, #bbb6aa, #8f9488) !important; }body[data-view="change-password"] .brand-mark__person--secondary::before{ background: #efe7da !important; }body[data-view="change-password"] .login-panel,body[data-view="change-password"] .detail-panel,body[data-view="change-password"] .progress-card,body[data-view="change-password"] .certification-card,body[data-view="change-password"] .pending-card,body[data-view="change-password"] .question-card,body[data-view="change-password"] .employee-card,body[data-view="change-password"] .person-summary,body[data-view="change-password"] .person-profile,body[data-view="change-password"] .question-bank-filter,body[data-view="change-password"] .question-bank-intro,body[data-view="change-password"] .assessment-search,body[data-view="change-password"] .assessment-note,body[data-view="change-password"] .evaluation-form,body[data-view="change-password"] .assessment-form,body[data-view="change-password"] .review-reminder,body[data-view="change-password"] .page-notice{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="change-password"] .login-panel__header h2::after{ background: #a58a69 !important; }body[data-view="change-password"] .form-field__control input,body[data-view="change-password"] .personnel-filter input,body[data-view="change-password"] .personnel-filter select,body[data-view="change-password"] .review-filter input,body[data-view="change-password"] .review-filter select,body[data-view="change-password"] .certification-tools input,body[data-view="change-password"] input,body[data-view="change-password"] select,body[data-view="change-password"] textarea{
+  color: var(--theme-text) !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="change-password"] input:focus,body[data-view="change-password"] select:focus,body[data-view="change-password"] textarea:focus{
+  border-color: #a58a69 !important;
+  box-shadow: 0 0 0 3px rgba(165,138,105,.15) !important;
+}body[data-view="change-password"] .form-field__icon,body[data-view="change-password"] .form-field__icon::after,body[data-view="change-password"] .form-field:nth-of-type(2) .form-field__icon::before{ border-color: #92775a !important; }body[data-view="change-password"] .login-form__submit,body[data-view="change-password"] .primary-action,body[data-view="change-password"] .pending-review > header button,body[data-view="change-password"] .personnel-filter button:last-child,body[data-view="change-password"] .review-actions button:not(.danger),body[data-view="change-password"] .form-actions button:last-child{
+  color: #fff !important;
+  border-color: #92775a !important;
+  background: linear-gradient(135deg, #b39b7f, #8f7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="change-password"] .demo-notice,body[data-view="change-password"] .employee-label,body[data-view="change-password"] .demo-note,body[data-view="change-password"] .question-reminder,body[data-view="change-password"] .record-badge,body[data-view="change-password"] .assessment-note,body[data-view="change-password"] .page-notice{ color: #685d51 !important; background: #efe7da !important; }body[data-view="change-password"] .step-label,body[data-view="change-password"] .back-login,body[data-view="change-password"] .detail-link,body[data-view="change-password"] .detail-header a{ color: #80684f !important; }body[data-view="change-password"] .dashboard-summary article,body[data-view="change-password"] .pending-review,body[data-view="change-password"] .personnel-filter,body[data-view="change-password"] .personnel-list,body[data-view="change-password"] .certification-panel,body[data-view="change-password"] .review-filter,body[data-view="change-password"] .review-panel,body[data-view="change-password"] .profile-card,body[data-view="change-password"] .detail-tabs,body[data-view="change-password"] .detail-content,body[data-view="change-password"] .allowance,body[data-view="change-password"] .status-summary,body[data-view="change-password"] .certified-list,body[data-view="change-password"] .progress-list,body[data-view="change-password"] .pending-list,body[data-view="change-password"] .question-list,body[data-view="change-password"] .employee-list{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="change-password"] .dashboard-summary article::before{ background: #b49b7d !important; }body[data-view="change-password"] .dashboard-summary article:last-child::before{ background: #978a7a !important; }body[data-view="change-password"] .dashboard-summary a,body[data-view="change-password"] td a,body[data-view="change-password"] .detail-button,body[data-view="change-password"] .review-button,body[data-view="change-password"] .secondary-action,body[data-view="change-password"] .certification-tools button,body[data-view="change-password"] .review-filter button,body[data-view="change-password"] .personnel-filter .export-button{
+  color: #745d45 !important;
+  border-color: #b9a284 !important;
+  background: #fffdfa !important;
+}body[data-view="change-password"] th{ color: #676b70 !important; background: #efe7da !important; }body[data-view="change-password"] td{ border-color: #e5dbce !important; }body[data-view="change-password"] tbody tr:hover td{ background: #faf5ee !important; }body[data-view="change-password"] .status-tabs button,body[data-view="change-password"] .certification-tabs button,body[data-view="change-password"] .assessment-tabs button{
+  color: #6c6258 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="change-password"] .status-tabs button[aria-selected="true"],body[data-view="change-password"] .certification-tabs button[aria-selected="true"],body[data-view="change-password"] .assessment-tabs button[aria-selected="true"]{
+  color: #654f39 !important;
+  border-color: #b9a284 !important;
+  background: #efe7da !important;
+}body[data-view="change-password"] .bottom-nav{
+  border-color: var(--theme-line) !important;
+  background: rgba(255,253,250,.96) !important;
+  box-shadow: 0 -8px 24px rgba(78,67,55,.08) !important;
+}body[data-view="change-password"] .bottom-nav a{ color: #7b7b79 !important; }body[data-view="change-password"] .bottom-nav a[aria-current="page"],body[data-view="change-password"] .bottom-nav a.active{ color: #80684f !important; }body[data-view="change-password"] .page-header button,body[data-view="change-password"] .home-header button,body[data-view="change-password"] .home-header__actions button{
+  color: #745d45 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="change-password"] .status.active,body[data-view="change-password"] .pass{ color: #59705f !important; background: #edf2ed !important; }body[data-view="change-password"] .status.discontinued{ color: #737373 !important; background: #f0ede9 !important; }body[data-view="change-password"] .review-actions .danger{ color: #9b5555 !important; border-color: #d2a4a4 !important; background: #fffafa !important; }body[data-view="change-password"] .empty-message{ color: #77736f !important; border-color: var(--theme-line) !important; background: #faf6f0 !important; }body[data-view="change-password"] dialog{ border-color: var(--theme-line) !important; background: #fffdfa !important; }body[data-view="change-password"] dialog::backdrop{ background: rgba(63,70,80,.3) !important; }body[data-view="change-password"] .maritime-scene{
+  background: linear-gradient(170deg,transparent 57%,rgba(226,215,200,.6) 58% 67%,transparent 68%),
+    linear-gradient(8deg,transparent 64%,rgba(239,231,218,.78) 65% 78%,transparent 79%),
+    linear-gradient(to bottom,transparent 62%,rgba(218,204,186,.42)) !important;
+}body[data-view="change-password"] .maritime-scene__lighthouse{ background: linear-gradient(to right,#d9cbb8,#fffdfa 45%,#baa383) !important; }body[data-view="change-password"] .maritime-scene__ship{ background: linear-gradient(145deg,#aaa397,#6f756f) !important; }body[data-view="change-password"] .login-page__waves{
+  background: radial-gradient(ellipse at 30% 0,rgba(239,231,218,.86),transparent 60%),
+    linear-gradient(to bottom,rgba(244,238,230,.9),rgba(222,211,196,.62)) !important;
+}
+
+@media (max-width: 620px) {body[data-view="change-password"] .admin-sidebar nav a{ background: #fffdfa !important; }body[data-view="change-password"] .admin-sidebar nav a[aria-current="page"]{ background: #efe7da !important; box-shadow: none !important; }body[data-view="change-password"] .pending-review tbody tr,body[data-view="change-password"] .personnel-list tbody tr,body[data-view="change-password"] .certification-panel tbody tr,body[data-view="change-password"] .review-panel tbody tr{
+    border-color: var(--theme-line) !important;
+    background: #fffdfa !important;
+  }
+}
+

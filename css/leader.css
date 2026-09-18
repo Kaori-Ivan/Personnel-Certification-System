@@ -1,0 +1,867 @@
+/* 原始樣式依畫面隔離後合併；避免各頁通用選擇器互相覆蓋 */
+
+/* leader-assessment｜leader-assessment.css */
+body[data-view="leader-assessment"]{
+  --navy: #102f64;
+  --blue: #2479ed;
+  --orange: #f28b20;
+  --soft-text: #657594;
+  --border: #e3ebf5;
+}body[data-view="leader-assessment"] *{
+  box-sizing: border-box;
+}html:has(body[data-view="leader-assessment"]){
+  min-width: 320px;
+  color: var(--navy);
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  background: #f6faff;
+}body[data-view="leader-assessment"]{
+  min-height: 100vh;
+  margin: 0;
+  padding-bottom: 88px;
+  background: linear-gradient(160deg, #fbfdff, #f3f8ff);
+}body[data-view="leader-assessment"] button,body[data-view="leader-assessment"] input{
+  font: inherit;
+}body[data-view="leader-assessment"] a{
+  color: inherit;
+  text-decoration: none;
+}body[data-view="leader-assessment"] .assessment-page{
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}body[data-view="leader-assessment"] .page-header{
+  display: grid;
+  grid-template-columns: 48px 1fr 58px;
+  align-items: center;
+  margin-bottom: 18px;
+}body[data-view="leader-assessment"] .page-header h1{
+  margin: 0;
+  font-size: 1.55rem;
+  text-align: center;
+}body[data-view="leader-assessment"] .page-header a,body[data-view="leader-assessment"] .page-header button{
+  display: grid;
+  min-height: 44px;
+  padding: 0;
+  place-items: center;
+  color: var(--navy);
+  border: 0;
+  background: transparent;
+}body[data-view="leader-assessment"] .page-header a{
+  font-size: 2rem;
+}body[data-view="leader-assessment"] .assessment-tabs{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}body[data-view="leader-assessment"] .assessment-tabs button{
+  position: relative;
+  min-height: 56px;
+  color: var(--soft-text);
+  border: 0;
+  background: transparent;
+}body[data-view="leader-assessment"] .assessment-tabs button[aria-selected="true"]{
+  color: var(--blue);
+  font-weight: 700;
+}body[data-view="leader-assessment"] .assessment-tabs button[aria-selected="true"]::after{
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: 3px;
+  content: "";
+  border-radius: 99px;
+  background: var(--blue);
+}body[data-view="leader-assessment"] .assessment-search{
+  margin-bottom: 18px;
+}body[data-view="leader-assessment"] .assessment-search label{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}body[data-view="leader-assessment"] .assessment-search input{
+  width: 100%;
+  min-height: 50px;
+  padding: 0 16px;
+  color: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  outline: none;
+  background: white;
+}body[data-view="leader-assessment"] .assessment-search input:focus{
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(36, 121, 237, 0.1);
+}body[data-view="leader-assessment"] .employee-list{
+  display: grid;
+  gap: 12px;
+}body[data-view="leader-assessment"] .employee-card{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 14px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(59, 99, 151, 0.07);
+}body[data-view="leader-assessment"] .employee-card[hidden]{
+  display: none;
+}body[data-view="leader-assessment"] .employee-card h2{
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}body[data-view="leader-assessment"] .employee-card p{
+  margin: 3px 0;
+  color: var(--soft-text);
+  font-size: 0.82rem;
+}body[data-view="leader-assessment"] .employee-card > span{
+  align-self: start;
+  padding: 5px 9px;
+  color: var(--orange);
+  font-size: 0.78rem;
+  border-radius: 8px;
+  background: #fff1e2;
+}body[data-view="leader-assessment"] .employee-card[data-status="completed"] > span{
+  color: #248c59;
+  background: #e8f7ee;
+}body[data-view="leader-assessment"] .employee-card > a{
+  grid-column: 2;
+  align-self: end;
+  padding: 8px 11px;
+  color: var(--blue);
+  font-size: 0.86rem;
+  text-align: center;
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+}body[data-view="leader-assessment"] .bottom-nav{
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 12px 8px max(12px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+  border-radius: 24px 24px 0 0;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -7px 24px rgba(61, 101, 156, 0.08);
+}body[data-view="leader-assessment"] .bottom-nav a{
+  padding: 8px 4px;
+  color: #6c7b96;
+  text-align: center;
+}
+
+@media (max-width: 759px) {body[data-view="leader-assessment"] .employee-card{
+    gap: 6px 10px;
+    padding: 13px 14px;
+    border-radius: 14px;
+  }body[data-view="leader-assessment"] .employee-card h2{
+    margin-bottom: 3px;
+    font-size: 1rem;
+  }body[data-view="leader-assessment"] .employee-card p{
+    margin: 1px 0;
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }body[data-view="leader-assessment"] .employee-card > span{
+    padding: 4px 7px;
+    font-size: 0.72rem;
+  }body[data-view="leader-assessment"] .employee-card > a{
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (min-width: 760px) {body[data-view="leader-assessment"]{
+    padding-bottom: 0;
+  }body[data-view="leader-assessment"] .assessment-page{
+    padding: 42px 36px 120px;
+  }body[data-view="leader-assessment"] .employee-list{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }body[data-view="leader-assessment"] .employee-card{
+    padding: 22px;
+  }body[data-view="leader-assessment"] .bottom-nav{
+    right: auto;
+    left: 50%;
+    width: min(680px, 80%);
+    border: 1px solid var(--border);
+    border-bottom: 0;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 360px) {body[data-view="leader-assessment"] .employee-card{
+    grid-template-columns: 1fr;
+  }body[data-view="leader-assessment"] .employee-card > span,body[data-view="leader-assessment"] .employee-card > a{
+    grid-column: 1;
+    justify-self: start;
+  }
+}
+
+
+/* leader-assessment｜system-theme.css */
+body[data-view="leader-assessment"]{
+  --navy: #3f4650;
+  --blue: #9a8264;
+  --orange: #a9825d;
+  --green: #687d6c;
+  --purple: #827467;
+  --soft-text: #74787d;
+  --text-soft: #74787d;
+  --border: #ded4c5;
+  --surface: rgba(255, 253, 249, 0.97);
+  --page: #f7f3ed;
+  --color-navy: #3f4650;
+  --color-text: #74787d;
+  --color-primary: #a58a69;
+  --color-primary-light: #c7b296;
+  --color-border: #ded4c5;
+  --color-surface: rgba(255, 253, 249, 0.97);
+  --theme-main: #efe7da;
+  --theme-light: #f8f4ee;
+  --theme-card: #fffdfa;
+  --theme-line: #d9cbb8;
+  --theme-accent: #92775a;
+  --theme-text: #3f4650;
+  --shadow-card: 0 12px 34px rgba(78, 67, 55, 0.09);
+}html:has(body[data-view="leader-assessment"]){ color: var(--theme-text); background: var(--theme-light); }body[data-view="leader-assessment"]{
+  background: radial-gradient(circle at 92% 5%, rgba(239,231,218,.78), transparent 24rem),
+    linear-gradient(155deg, #fcfaf7 0%, #f7f3ed 58%, #f2ece3 100%) !important;
+}body[data-view="leader-assessment"] .admin-sidebar{
+  border-color: var(--theme-line) !important;
+  background: linear-gradient(180deg, #fffdfa 0%, #f5efe6 100%) !important;
+}body[data-view="leader-assessment"] .admin-sidebar header::before{
+  color: #fff !important;
+  background: linear-gradient(145deg, #b29a7d, #8e7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="leader-assessment"] .admin-sidebar nav a{ color: #6f6d6a !important; }body[data-view="leader-assessment"] .admin-sidebar nav a:hover{ color: #745d45 !important; background: #f5eee4 !important; }body[data-view="leader-assessment"] .admin-sidebar nav a[aria-current="page"]{
+  color: #654f39 !important;
+  border-color: #d4c3ae !important;
+  background: #efe7da !important;
+  box-shadow: inset 3px 0 #a58a69 !important;
+}body[data-view="leader-assessment"] .login-page,body[data-view="leader-assessment"] .change-page{
+  background: radial-gradient(circle at 8% 12%, rgba(239,231,218,.9) 0 55px, transparent 56px),
+    radial-gradient(circle at 96% 18%, rgba(224,211,193,.48) 0 65px, transparent 66px),
+    linear-gradient(150deg, #fff 0%, #faf7f2 48%, #f2ece3 100%) !important;
+}body[data-view="leader-assessment"] .brand-mark__person--primary{ background: linear-gradient(145deg, #c3ad91, #92775a) !important; }body[data-view="leader-assessment"] .brand-mark__person--primary::before{ background: #a58a69 !important; }body[data-view="leader-assessment"] .brand-mark__person--secondary{ background: linear-gradient(145deg, #bbb6aa, #8f9488) !important; }body[data-view="leader-assessment"] .brand-mark__person--secondary::before{ background: #efe7da !important; }body[data-view="leader-assessment"] .login-panel,body[data-view="leader-assessment"] .detail-panel,body[data-view="leader-assessment"] .progress-card,body[data-view="leader-assessment"] .certification-card,body[data-view="leader-assessment"] .pending-card,body[data-view="leader-assessment"] .question-card,body[data-view="leader-assessment"] .employee-card,body[data-view="leader-assessment"] .person-summary,body[data-view="leader-assessment"] .person-profile,body[data-view="leader-assessment"] .question-bank-filter,body[data-view="leader-assessment"] .question-bank-intro,body[data-view="leader-assessment"] .assessment-search,body[data-view="leader-assessment"] .assessment-note,body[data-view="leader-assessment"] .evaluation-form,body[data-view="leader-assessment"] .assessment-form,body[data-view="leader-assessment"] .review-reminder,body[data-view="leader-assessment"] .page-notice{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="leader-assessment"] .login-panel__header h2::after{ background: #a58a69 !important; }body[data-view="leader-assessment"] .form-field__control input,body[data-view="leader-assessment"] .personnel-filter input,body[data-view="leader-assessment"] .personnel-filter select,body[data-view="leader-assessment"] .review-filter input,body[data-view="leader-assessment"] .review-filter select,body[data-view="leader-assessment"] .certification-tools input,body[data-view="leader-assessment"] input,body[data-view="leader-assessment"] select,body[data-view="leader-assessment"] textarea{
+  color: var(--theme-text) !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment"] input:focus,body[data-view="leader-assessment"] select:focus,body[data-view="leader-assessment"] textarea:focus{
+  border-color: #a58a69 !important;
+  box-shadow: 0 0 0 3px rgba(165,138,105,.15) !important;
+}body[data-view="leader-assessment"] .form-field__icon,body[data-view="leader-assessment"] .form-field__icon::after,body[data-view="leader-assessment"] .form-field:nth-of-type(2) .form-field__icon::before{ border-color: #92775a !important; }body[data-view="leader-assessment"] .login-form__submit,body[data-view="leader-assessment"] .primary-action,body[data-view="leader-assessment"] .pending-review > header button,body[data-view="leader-assessment"] .personnel-filter button:last-child,body[data-view="leader-assessment"] .review-actions button:not(.danger),body[data-view="leader-assessment"] .form-actions button:last-child{
+  color: #fff !important;
+  border-color: #92775a !important;
+  background: linear-gradient(135deg, #b39b7f, #8f7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="leader-assessment"] .demo-notice,body[data-view="leader-assessment"] .employee-label,body[data-view="leader-assessment"] .demo-note,body[data-view="leader-assessment"] .question-reminder,body[data-view="leader-assessment"] .record-badge,body[data-view="leader-assessment"] .assessment-note,body[data-view="leader-assessment"] .page-notice{ color: #685d51 !important; background: #efe7da !important; }body[data-view="leader-assessment"] .step-label,body[data-view="leader-assessment"] .back-login,body[data-view="leader-assessment"] .detail-link,body[data-view="leader-assessment"] .detail-header a{ color: #80684f !important; }body[data-view="leader-assessment"] .dashboard-summary article,body[data-view="leader-assessment"] .pending-review,body[data-view="leader-assessment"] .personnel-filter,body[data-view="leader-assessment"] .personnel-list,body[data-view="leader-assessment"] .certification-panel,body[data-view="leader-assessment"] .review-filter,body[data-view="leader-assessment"] .review-panel,body[data-view="leader-assessment"] .profile-card,body[data-view="leader-assessment"] .detail-tabs,body[data-view="leader-assessment"] .detail-content,body[data-view="leader-assessment"] .allowance,body[data-view="leader-assessment"] .status-summary,body[data-view="leader-assessment"] .certified-list,body[data-view="leader-assessment"] .progress-list,body[data-view="leader-assessment"] .pending-list,body[data-view="leader-assessment"] .question-list,body[data-view="leader-assessment"] .employee-list{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="leader-assessment"] .dashboard-summary article::before{ background: #b49b7d !important; }body[data-view="leader-assessment"] .dashboard-summary article:last-child::before{ background: #978a7a !important; }body[data-view="leader-assessment"] .dashboard-summary a,body[data-view="leader-assessment"] td a,body[data-view="leader-assessment"] .detail-button,body[data-view="leader-assessment"] .review-button,body[data-view="leader-assessment"] .secondary-action,body[data-view="leader-assessment"] .certification-tools button,body[data-view="leader-assessment"] .review-filter button,body[data-view="leader-assessment"] .personnel-filter .export-button{
+  color: #745d45 !important;
+  border-color: #b9a284 !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment"] th{ color: #676b70 !important; background: #efe7da !important; }body[data-view="leader-assessment"] td{ border-color: #e5dbce !important; }body[data-view="leader-assessment"] tbody tr:hover td{ background: #faf5ee !important; }body[data-view="leader-assessment"] .status-tabs button,body[data-view="leader-assessment"] .certification-tabs button,body[data-view="leader-assessment"] .assessment-tabs button{
+  color: #6c6258 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment"] .status-tabs button[aria-selected="true"],body[data-view="leader-assessment"] .certification-tabs button[aria-selected="true"],body[data-view="leader-assessment"] .assessment-tabs button[aria-selected="true"]{
+  color: #654f39 !important;
+  border-color: #b9a284 !important;
+  background: #efe7da !important;
+}body[data-view="leader-assessment"] .bottom-nav{
+  border-color: var(--theme-line) !important;
+  background: rgba(255,253,250,.96) !important;
+  box-shadow: 0 -8px 24px rgba(78,67,55,.08) !important;
+}body[data-view="leader-assessment"] .bottom-nav a{ color: #7b7b79 !important; }body[data-view="leader-assessment"] .bottom-nav a[aria-current="page"],body[data-view="leader-assessment"] .bottom-nav a.active{ color: #80684f !important; }body[data-view="leader-assessment"] .page-header button,body[data-view="leader-assessment"] .home-header button,body[data-view="leader-assessment"] .home-header__actions button{
+  color: #745d45 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment"] .status.active,body[data-view="leader-assessment"] .pass{ color: #59705f !important; background: #edf2ed !important; }body[data-view="leader-assessment"] .status.discontinued{ color: #737373 !important; background: #f0ede9 !important; }body[data-view="leader-assessment"] .review-actions .danger{ color: #9b5555 !important; border-color: #d2a4a4 !important; background: #fffafa !important; }body[data-view="leader-assessment"] .empty-message{ color: #77736f !important; border-color: var(--theme-line) !important; background: #faf6f0 !important; }body[data-view="leader-assessment"] dialog{ border-color: var(--theme-line) !important; background: #fffdfa !important; }body[data-view="leader-assessment"] dialog::backdrop{ background: rgba(63,70,80,.3) !important; }body[data-view="leader-assessment"] .maritime-scene{
+  background: linear-gradient(170deg,transparent 57%,rgba(226,215,200,.6) 58% 67%,transparent 68%),
+    linear-gradient(8deg,transparent 64%,rgba(239,231,218,.78) 65% 78%,transparent 79%),
+    linear-gradient(to bottom,transparent 62%,rgba(218,204,186,.42)) !important;
+}body[data-view="leader-assessment"] .maritime-scene__lighthouse{ background: linear-gradient(to right,#d9cbb8,#fffdfa 45%,#baa383) !important; }body[data-view="leader-assessment"] .maritime-scene__ship{ background: linear-gradient(145deg,#aaa397,#6f756f) !important; }body[data-view="leader-assessment"] .login-page__waves{
+  background: radial-gradient(ellipse at 30% 0,rgba(239,231,218,.86),transparent 60%),
+    linear-gradient(to bottom,rgba(244,238,230,.9),rgba(222,211,196,.62)) !important;
+}
+
+@media (max-width: 620px) {body[data-view="leader-assessment"] .admin-sidebar nav a{ background: #fffdfa !important; }body[data-view="leader-assessment"] .admin-sidebar nav a[aria-current="page"]{ background: #efe7da !important; box-shadow: none !important; }body[data-view="leader-assessment"] .pending-review tbody tr,body[data-view="leader-assessment"] .personnel-list tbody tr,body[data-view="leader-assessment"] .certification-panel tbody tr,body[data-view="leader-assessment"] .review-panel tbody tr{
+    border-color: var(--theme-line) !important;
+    background: #fffdfa !important;
+  }
+}
+
+
+/* leader-assessment-form｜leader-assessment-form.css */
+body[data-view="leader-assessment-form"]{
+  --navy: #102f64;
+  --blue: #2479ed;
+  --green: #25a765;
+  --soft-text: #657594;
+  --border: #e3ebf5;
+}body[data-view="leader-assessment-form"] *{
+  box-sizing: border-box;
+}html:has(body[data-view="leader-assessment-form"]){
+  min-width: 320px;
+  color: var(--navy);
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  background: #f6faff;
+}body[data-view="leader-assessment-form"]{
+  min-height: 100vh;
+  margin: 0;
+  padding-bottom: 88px;
+  background: linear-gradient(160deg, #fbfdff, #f3f8ff);
+}body[data-view="leader-assessment-form"] button,body[data-view="leader-assessment-form"] input,body[data-view="leader-assessment-form"] textarea{
+  font: inherit;
+}body[data-view="leader-assessment-form"] a{
+  color: inherit;
+  text-decoration: none;
+}body[data-view="leader-assessment-form"] .assessment-form-page{
+  width: min(100%, 820px);
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}body[data-view="leader-assessment-form"] .page-header{
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  margin-bottom: 18px;
+}body[data-view="leader-assessment-form"] .page-header h1{
+  margin: 0;
+  font-size: 1.55rem;
+  text-align: center;
+}body[data-view="leader-assessment-form"] .page-header a{
+  display: grid;
+  min-height: 44px;
+  place-items: center;
+  font-size: 2rem;
+}body[data-view="leader-assessment-form"] .employee-summary,body[data-view="leader-assessment-form"] .assessment-form > section,body[data-view="leader-assessment-form"] .assessment-note{
+  display: block;
+  margin-bottom: 16px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(59, 99, 151, 0.07);
+}body[data-view="leader-assessment-form"] .employee-summary > div{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}body[data-view="leader-assessment-form"] .employee-summary h2{
+  margin: 0;
+  font-size: 1.2rem;
+}body[data-view="leader-assessment-form"] .employee-summary > div span{
+  padding: 4px 9px;
+  color: var(--green);
+  font-size: 0.76rem;
+  border-radius: 8px;
+  background: #e8f7ee;
+}body[data-view="leader-assessment-form"] .employee-summary dl{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 16px 0 0;
+}body[data-view="leader-assessment-form"] .employee-summary dt{
+  color: var(--soft-text);
+  font-size: 0.76rem;
+}body[data-view="leader-assessment-form"] .employee-summary dd{
+  margin: 3px 0 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+}body[data-view="leader-assessment-form"] .assessment-form h2{
+  margin: 0 0 15px;
+  font-size: 1.1rem;
+}body[data-view="leader-assessment-form"] .score-table{
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}body[data-view="leader-assessment-form"] .score-row{
+  display: grid;
+  grid-template-columns: minmax(130px, 1fr) 45px 62px;
+  gap: 8px;
+  align-items: center;
+  min-height: 48px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+}body[data-view="leader-assessment-form"] .score-row--header{
+  color: var(--soft-text);
+  font-size: 0.78rem;
+  background: #f5f8fc;
+}body[data-view="leader-assessment-form"] .score-row > span:first-child{
+  font-size: 0.86rem;
+  font-weight: 700;
+}body[data-view="leader-assessment-form"] .score-row > span:nth-child(2){
+  text-align: center;
+}body[data-view="leader-assessment-form"] .score-row input{
+  width: 100%;
+  min-height: 34px;
+  padding: 3px 6px;
+  color: var(--navy);
+  text-align: center;
+  border: 1px solid #cdd9e9;
+  border-radius: 7px;
+  outline: none;
+}body[data-view="leader-assessment-form"] .score-row input:focus{
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(36, 121, 237, 0.1);
+}body[data-view="leader-assessment-form"] .score-total{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+}body[data-view="leader-assessment-form"] .score-total output{
+  color: var(--green);
+  font-size: 1.5rem;
+  font-weight: 700;
+}body[data-view="leader-assessment-form"] .assessment-note{
+  color: var(--navy);
+  font-size: 0.9rem;
+  font-weight: 700;
+}body[data-view="leader-assessment-form"] .assessment-note textarea{
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  resize: vertical;
+  color: var(--navy);
+  font-weight: 400;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+}body[data-view="leader-assessment-form"] .assessment-note textarea:focus{
+  border-color: var(--blue);
+}body[data-view="leader-assessment-form"] .form-actions{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+}body[data-view="leader-assessment-form"] .form-actions button{
+  min-height: 48px;
+  color: var(--blue);
+  font-weight: 700;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  background: white;
+}body[data-view="leader-assessment-form"] .form-actions button[type="submit"]{
+  color: white;
+  background: var(--blue);
+}body[data-view="leader-assessment-form"] .bottom-nav{
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 12px 8px max(12px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+  border-radius: 24px 24px 0 0;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -7px 24px rgba(61, 101, 156, 0.08);
+}body[data-view="leader-assessment-form"] .bottom-nav a{
+  padding: 8px 4px;
+  color: #6c7b96;
+  text-align: center;
+}
+
+@media (min-width: 760px) {body[data-view="leader-assessment-form"]{
+    padding-bottom: 0;
+  }body[data-view="leader-assessment-form"] .assessment-form-page{
+    padding: 42px 36px 120px;
+  }body[data-view="leader-assessment-form"] .employee-summary,body[data-view="leader-assessment-form"] .assessment-form > section,body[data-view="leader-assessment-form"] .assessment-note{
+    padding: 24px;
+  }body[data-view="leader-assessment-form"] .employee-summary dl{
+    grid-template-columns: repeat(4, 1fr);
+  }body[data-view="leader-assessment-form"] .score-row{
+    grid-template-columns: minmax(220px, 1fr) 90px 100px;
+  }body[data-view="leader-assessment-form"] .bottom-nav{
+    right: auto;
+    left: 50%;
+    width: min(680px, 80%);
+    border: 1px solid var(--border);
+    border-bottom: 0;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 370px) {body[data-view="leader-assessment-form"] .score-row{
+    grid-template-columns: minmax(110px, 1fr) 36px 54px;
+    padding-right: 7px;
+    padding-left: 7px;
+  }body[data-view="leader-assessment-form"] .form-actions{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* leader-assessment-form｜system-theme.css */
+body[data-view="leader-assessment-form"]{
+  --navy: #3f4650;
+  --blue: #9a8264;
+  --orange: #a9825d;
+  --green: #687d6c;
+  --purple: #827467;
+  --soft-text: #74787d;
+  --text-soft: #74787d;
+  --border: #ded4c5;
+  --surface: rgba(255, 253, 249, 0.97);
+  --page: #f7f3ed;
+  --color-navy: #3f4650;
+  --color-text: #74787d;
+  --color-primary: #a58a69;
+  --color-primary-light: #c7b296;
+  --color-border: #ded4c5;
+  --color-surface: rgba(255, 253, 249, 0.97);
+  --theme-main: #efe7da;
+  --theme-light: #f8f4ee;
+  --theme-card: #fffdfa;
+  --theme-line: #d9cbb8;
+  --theme-accent: #92775a;
+  --theme-text: #3f4650;
+  --shadow-card: 0 12px 34px rgba(78, 67, 55, 0.09);
+}html:has(body[data-view="leader-assessment-form"]){ color: var(--theme-text); background: var(--theme-light); }body[data-view="leader-assessment-form"]{
+  background: radial-gradient(circle at 92% 5%, rgba(239,231,218,.78), transparent 24rem),
+    linear-gradient(155deg, #fcfaf7 0%, #f7f3ed 58%, #f2ece3 100%) !important;
+}body[data-view="leader-assessment-form"] .admin-sidebar{
+  border-color: var(--theme-line) !important;
+  background: linear-gradient(180deg, #fffdfa 0%, #f5efe6 100%) !important;
+}body[data-view="leader-assessment-form"] .admin-sidebar header::before{
+  color: #fff !important;
+  background: linear-gradient(145deg, #b29a7d, #8e7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="leader-assessment-form"] .admin-sidebar nav a{ color: #6f6d6a !important; }body[data-view="leader-assessment-form"] .admin-sidebar nav a:hover{ color: #745d45 !important; background: #f5eee4 !important; }body[data-view="leader-assessment-form"] .admin-sidebar nav a[aria-current="page"]{
+  color: #654f39 !important;
+  border-color: #d4c3ae !important;
+  background: #efe7da !important;
+  box-shadow: inset 3px 0 #a58a69 !important;
+}body[data-view="leader-assessment-form"] .login-page,body[data-view="leader-assessment-form"] .change-page{
+  background: radial-gradient(circle at 8% 12%, rgba(239,231,218,.9) 0 55px, transparent 56px),
+    radial-gradient(circle at 96% 18%, rgba(224,211,193,.48) 0 65px, transparent 66px),
+    linear-gradient(150deg, #fff 0%, #faf7f2 48%, #f2ece3 100%) !important;
+}body[data-view="leader-assessment-form"] .brand-mark__person--primary{ background: linear-gradient(145deg, #c3ad91, #92775a) !important; }body[data-view="leader-assessment-form"] .brand-mark__person--primary::before{ background: #a58a69 !important; }body[data-view="leader-assessment-form"] .brand-mark__person--secondary{ background: linear-gradient(145deg, #bbb6aa, #8f9488) !important; }body[data-view="leader-assessment-form"] .brand-mark__person--secondary::before{ background: #efe7da !important; }body[data-view="leader-assessment-form"] .login-panel,body[data-view="leader-assessment-form"] .detail-panel,body[data-view="leader-assessment-form"] .progress-card,body[data-view="leader-assessment-form"] .certification-card,body[data-view="leader-assessment-form"] .pending-card,body[data-view="leader-assessment-form"] .question-card,body[data-view="leader-assessment-form"] .employee-card,body[data-view="leader-assessment-form"] .person-summary,body[data-view="leader-assessment-form"] .person-profile,body[data-view="leader-assessment-form"] .question-bank-filter,body[data-view="leader-assessment-form"] .question-bank-intro,body[data-view="leader-assessment-form"] .assessment-search,body[data-view="leader-assessment-form"] .assessment-note,body[data-view="leader-assessment-form"] .evaluation-form,body[data-view="leader-assessment-form"] .assessment-form,body[data-view="leader-assessment-form"] .review-reminder,body[data-view="leader-assessment-form"] .page-notice{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="leader-assessment-form"] .login-panel__header h2::after{ background: #a58a69 !important; }body[data-view="leader-assessment-form"] .form-field__control input,body[data-view="leader-assessment-form"] .personnel-filter input,body[data-view="leader-assessment-form"] .personnel-filter select,body[data-view="leader-assessment-form"] .review-filter input,body[data-view="leader-assessment-form"] .review-filter select,body[data-view="leader-assessment-form"] .certification-tools input,body[data-view="leader-assessment-form"] input,body[data-view="leader-assessment-form"] select,body[data-view="leader-assessment-form"] textarea{
+  color: var(--theme-text) !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment-form"] input:focus,body[data-view="leader-assessment-form"] select:focus,body[data-view="leader-assessment-form"] textarea:focus{
+  border-color: #a58a69 !important;
+  box-shadow: 0 0 0 3px rgba(165,138,105,.15) !important;
+}body[data-view="leader-assessment-form"] .form-field__icon,body[data-view="leader-assessment-form"] .form-field__icon::after,body[data-view="leader-assessment-form"] .form-field:nth-of-type(2) .form-field__icon::before{ border-color: #92775a !important; }body[data-view="leader-assessment-form"] .login-form__submit,body[data-view="leader-assessment-form"] .primary-action,body[data-view="leader-assessment-form"] .pending-review > header button,body[data-view="leader-assessment-form"] .personnel-filter button:last-child,body[data-view="leader-assessment-form"] .review-actions button:not(.danger),body[data-view="leader-assessment-form"] .form-actions button:last-child{
+  color: #fff !important;
+  border-color: #92775a !important;
+  background: linear-gradient(135deg, #b39b7f, #8f7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="leader-assessment-form"] .demo-notice,body[data-view="leader-assessment-form"] .employee-label,body[data-view="leader-assessment-form"] .demo-note,body[data-view="leader-assessment-form"] .question-reminder,body[data-view="leader-assessment-form"] .record-badge,body[data-view="leader-assessment-form"] .assessment-note,body[data-view="leader-assessment-form"] .page-notice{ color: #685d51 !important; background: #efe7da !important; }body[data-view="leader-assessment-form"] .step-label,body[data-view="leader-assessment-form"] .back-login,body[data-view="leader-assessment-form"] .detail-link,body[data-view="leader-assessment-form"] .detail-header a{ color: #80684f !important; }body[data-view="leader-assessment-form"] .dashboard-summary article,body[data-view="leader-assessment-form"] .pending-review,body[data-view="leader-assessment-form"] .personnel-filter,body[data-view="leader-assessment-form"] .personnel-list,body[data-view="leader-assessment-form"] .certification-panel,body[data-view="leader-assessment-form"] .review-filter,body[data-view="leader-assessment-form"] .review-panel,body[data-view="leader-assessment-form"] .profile-card,body[data-view="leader-assessment-form"] .detail-tabs,body[data-view="leader-assessment-form"] .detail-content,body[data-view="leader-assessment-form"] .allowance,body[data-view="leader-assessment-form"] .status-summary,body[data-view="leader-assessment-form"] .certified-list,body[data-view="leader-assessment-form"] .progress-list,body[data-view="leader-assessment-form"] .pending-list,body[data-view="leader-assessment-form"] .question-list,body[data-view="leader-assessment-form"] .employee-list{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="leader-assessment-form"] .dashboard-summary article::before{ background: #b49b7d !important; }body[data-view="leader-assessment-form"] .dashboard-summary article:last-child::before{ background: #978a7a !important; }body[data-view="leader-assessment-form"] .dashboard-summary a,body[data-view="leader-assessment-form"] td a,body[data-view="leader-assessment-form"] .detail-button,body[data-view="leader-assessment-form"] .review-button,body[data-view="leader-assessment-form"] .secondary-action,body[data-view="leader-assessment-form"] .certification-tools button,body[data-view="leader-assessment-form"] .review-filter button,body[data-view="leader-assessment-form"] .personnel-filter .export-button{
+  color: #745d45 !important;
+  border-color: #b9a284 !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment-form"] th{ color: #676b70 !important; background: #efe7da !important; }body[data-view="leader-assessment-form"] td{ border-color: #e5dbce !important; }body[data-view="leader-assessment-form"] tbody tr:hover td{ background: #faf5ee !important; }body[data-view="leader-assessment-form"] .status-tabs button,body[data-view="leader-assessment-form"] .certification-tabs button,body[data-view="leader-assessment-form"] .assessment-tabs button{
+  color: #6c6258 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment-form"] .status-tabs button[aria-selected="true"],body[data-view="leader-assessment-form"] .certification-tabs button[aria-selected="true"],body[data-view="leader-assessment-form"] .assessment-tabs button[aria-selected="true"]{
+  color: #654f39 !important;
+  border-color: #b9a284 !important;
+  background: #efe7da !important;
+}body[data-view="leader-assessment-form"] .bottom-nav{
+  border-color: var(--theme-line) !important;
+  background: rgba(255,253,250,.96) !important;
+  box-shadow: 0 -8px 24px rgba(78,67,55,.08) !important;
+}body[data-view="leader-assessment-form"] .bottom-nav a{ color: #7b7b79 !important; }body[data-view="leader-assessment-form"] .bottom-nav a[aria-current="page"],body[data-view="leader-assessment-form"] .bottom-nav a.active{ color: #80684f !important; }body[data-view="leader-assessment-form"] .page-header button,body[data-view="leader-assessment-form"] .home-header button,body[data-view="leader-assessment-form"] .home-header__actions button{
+  color: #745d45 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment-form"] .status.active,body[data-view="leader-assessment-form"] .pass{ color: #59705f !important; background: #edf2ed !important; }body[data-view="leader-assessment-form"] .status.discontinued{ color: #737373 !important; background: #f0ede9 !important; }body[data-view="leader-assessment-form"] .review-actions .danger{ color: #9b5555 !important; border-color: #d2a4a4 !important; background: #fffafa !important; }body[data-view="leader-assessment-form"] .empty-message{ color: #77736f !important; border-color: var(--theme-line) !important; background: #faf6f0 !important; }body[data-view="leader-assessment-form"] dialog{ border-color: var(--theme-line) !important; background: #fffdfa !important; }body[data-view="leader-assessment-form"] dialog::backdrop{ background: rgba(63,70,80,.3) !important; }body[data-view="leader-assessment-form"] .maritime-scene{
+  background: linear-gradient(170deg,transparent 57%,rgba(226,215,200,.6) 58% 67%,transparent 68%),
+    linear-gradient(8deg,transparent 64%,rgba(239,231,218,.78) 65% 78%,transparent 79%),
+    linear-gradient(to bottom,transparent 62%,rgba(218,204,186,.42)) !important;
+}body[data-view="leader-assessment-form"] .maritime-scene__lighthouse{ background: linear-gradient(to right,#d9cbb8,#fffdfa 45%,#baa383) !important; }body[data-view="leader-assessment-form"] .maritime-scene__ship{ background: linear-gradient(145deg,#aaa397,#6f756f) !important; }body[data-view="leader-assessment-form"] .login-page__waves{
+  background: radial-gradient(ellipse at 30% 0,rgba(239,231,218,.86),transparent 60%),
+    linear-gradient(to bottom,rgba(244,238,230,.9),rgba(222,211,196,.62)) !important;
+}
+
+@media (max-width: 620px) {body[data-view="leader-assessment-form"] .admin-sidebar nav a{ background: #fffdfa !important; }body[data-view="leader-assessment-form"] .admin-sidebar nav a[aria-current="page"]{ background: #efe7da !important; box-shadow: none !important; }body[data-view="leader-assessment-form"] .pending-review tbody tr,body[data-view="leader-assessment-form"] .personnel-list tbody tr,body[data-view="leader-assessment-form"] .certification-panel tbody tr,body[data-view="leader-assessment-form"] .review-panel tbody tr{
+    border-color: var(--theme-line) !important;
+    background: #fffdfa !important;
+  }
+}
+
+
+/* leader-assessment-evaluation｜leader-assessment-evaluation.css */
+body[data-view="leader-assessment-evaluation"]{
+  --navy: #102f64;
+  --blue: #2479ed;
+  --green: #25a765;
+  --soft-text: #657594;
+  --border: #e3ebf5;
+}body[data-view="leader-assessment-evaluation"] *{
+  box-sizing: border-box;
+}html:has(body[data-view="leader-assessment-evaluation"]){
+  min-width: 320px;
+  color: var(--navy);
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  background: #f6faff;
+}body[data-view="leader-assessment-evaluation"]{
+  min-height: 100vh;
+  margin: 0;
+  padding-bottom: 88px;
+  background: linear-gradient(160deg, #fbfdff, #f3f8ff);
+}body[data-view="leader-assessment-evaluation"] button,body[data-view="leader-assessment-evaluation"] select,body[data-view="leader-assessment-evaluation"] textarea{
+  font: inherit;
+}body[data-view="leader-assessment-evaluation"] a{
+  color: inherit;
+  text-decoration: none;
+}body[data-view="leader-assessment-evaluation"] .evaluation-page{
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}body[data-view="leader-assessment-evaluation"] .page-header{
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  margin-bottom: 18px;
+}body[data-view="leader-assessment-evaluation"] .page-header h1{
+  margin: 0;
+  font-size: 1.55rem;
+  text-align: center;
+}body[data-view="leader-assessment-evaluation"] .page-header a{
+  display: grid;
+  min-height: 44px;
+  place-items: center;
+  font-size: 2rem;
+}body[data-view="leader-assessment-evaluation"] .employee-summary,body[data-view="leader-assessment-evaluation"] .evaluation-form fieldset,body[data-view="leader-assessment-evaluation"] .result-field,body[data-view="leader-assessment-evaluation"] .comment-field{
+  display: block;
+  margin: 0 0 15px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(59, 99, 151, 0.07);
+}body[data-view="leader-assessment-evaluation"] .employee-summary > div{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}body[data-view="leader-assessment-evaluation"] .employee-summary h2{
+  margin: 0;
+  font-size: 1.15rem;
+}body[data-view="leader-assessment-evaluation"] .employee-summary span{
+  padding: 4px 9px;
+  color: var(--green);
+  font-size: 0.75rem;
+  border-radius: 8px;
+  background: #e8f7ee;
+}body[data-view="leader-assessment-evaluation"] .employee-summary p{
+  display: inline-block;
+  margin: 3px 16px 3px 0;
+  color: var(--soft-text);
+  font-size: 0.82rem;
+}body[data-view="leader-assessment-evaluation"] .evaluation-form fieldset{
+  padding-top: 13px;
+}body[data-view="leader-assessment-evaluation"] .evaluation-form legend{
+  padding: 0 7px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}body[data-view="leader-assessment-evaluation"] .evaluation-form fieldset label{
+  display: grid;
+  grid-template-columns: 1fr minmax(150px, 190px);
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+}body[data-view="leader-assessment-evaluation"] .evaluation-form fieldset label:last-child{
+  border-bottom: 0;
+}body[data-view="leader-assessment-evaluation"] .evaluation-form select,body[data-view="leader-assessment-evaluation"] .evaluation-form textarea{
+  width: 100%;
+  color: var(--navy);
+  border: 1px solid #cfdaea;
+  border-radius: 9px;
+  outline: none;
+  background: white;
+}body[data-view="leader-assessment-evaluation"] .evaluation-form select{
+  min-height: 42px;
+  padding: 0 10px;
+}body[data-view="leader-assessment-evaluation"] .evaluation-form select:focus,body[data-view="leader-assessment-evaluation"] .evaluation-form textarea:focus{
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(36, 121, 237, 0.1);
+}body[data-view="leader-assessment-evaluation"] .result-field,body[data-view="leader-assessment-evaluation"] .comment-field{
+  color: var(--navy);
+  font-size: 0.9rem;
+  font-weight: 700;
+}body[data-view="leader-assessment-evaluation"] .result-field select,body[data-view="leader-assessment-evaluation"] .comment-field textarea{
+  margin-top: 10px;
+  font-weight: 400;
+}body[data-view="leader-assessment-evaluation"] .comment-field textarea{
+  padding: 12px;
+  resize: vertical;
+}body[data-view="leader-assessment-evaluation"] .form-actions{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+}body[data-view="leader-assessment-evaluation"] .form-actions a,body[data-view="leader-assessment-evaluation"] .form-actions button{
+  display: grid;
+  min-height: 48px;
+  padding: 8px 12px;
+  place-items: center;
+  color: var(--blue);
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  background: white;
+}body[data-view="leader-assessment-evaluation"] .form-actions button{
+  color: white;
+  background: var(--blue);
+}body[data-view="leader-assessment-evaluation"] .bottom-nav{
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 12px 8px max(12px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+  border-radius: 24px 24px 0 0;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -7px 24px rgba(61, 101, 156, 0.08);
+}body[data-view="leader-assessment-evaluation"] .bottom-nav a{
+  padding: 8px 4px;
+  color: #6c7b96;
+  text-align: center;
+}
+
+@media (min-width: 760px) {body[data-view="leader-assessment-evaluation"]{
+    padding-bottom: 0;
+  }body[data-view="leader-assessment-evaluation"] .evaluation-page{
+    padding: 42px 36px 120px;
+  }body[data-view="leader-assessment-evaluation"] .employee-summary,body[data-view="leader-assessment-evaluation"] .evaluation-form fieldset,body[data-view="leader-assessment-evaluation"] .result-field,body[data-view="leader-assessment-evaluation"] .comment-field{
+    padding: 23px;
+  }body[data-view="leader-assessment-evaluation"] .bottom-nav{
+    right: auto;
+    left: 50%;
+    width: min(680px, 80%);
+    border: 1px solid var(--border);
+    border-bottom: 0;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 420px) {body[data-view="leader-assessment-evaluation"] .evaluation-form fieldset label{
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }body[data-view="leader-assessment-evaluation"] .form-actions{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* leader-assessment-evaluation｜system-theme.css */
+body[data-view="leader-assessment-evaluation"]{
+  --navy: #3f4650;
+  --blue: #9a8264;
+  --orange: #a9825d;
+  --green: #687d6c;
+  --purple: #827467;
+  --soft-text: #74787d;
+  --text-soft: #74787d;
+  --border: #ded4c5;
+  --surface: rgba(255, 253, 249, 0.97);
+  --page: #f7f3ed;
+  --color-navy: #3f4650;
+  --color-text: #74787d;
+  --color-primary: #a58a69;
+  --color-primary-light: #c7b296;
+  --color-border: #ded4c5;
+  --color-surface: rgba(255, 253, 249, 0.97);
+  --theme-main: #efe7da;
+  --theme-light: #f8f4ee;
+  --theme-card: #fffdfa;
+  --theme-line: #d9cbb8;
+  --theme-accent: #92775a;
+  --theme-text: #3f4650;
+  --shadow-card: 0 12px 34px rgba(78, 67, 55, 0.09);
+}html:has(body[data-view="leader-assessment-evaluation"]){ color: var(--theme-text); background: var(--theme-light); }body[data-view="leader-assessment-evaluation"]{
+  background: radial-gradient(circle at 92% 5%, rgba(239,231,218,.78), transparent 24rem),
+    linear-gradient(155deg, #fcfaf7 0%, #f7f3ed 58%, #f2ece3 100%) !important;
+}body[data-view="leader-assessment-evaluation"] .admin-sidebar{
+  border-color: var(--theme-line) !important;
+  background: linear-gradient(180deg, #fffdfa 0%, #f5efe6 100%) !important;
+}body[data-view="leader-assessment-evaluation"] .admin-sidebar header::before{
+  color: #fff !important;
+  background: linear-gradient(145deg, #b29a7d, #8e7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="leader-assessment-evaluation"] .admin-sidebar nav a{ color: #6f6d6a !important; }body[data-view="leader-assessment-evaluation"] .admin-sidebar nav a:hover{ color: #745d45 !important; background: #f5eee4 !important; }body[data-view="leader-assessment-evaluation"] .admin-sidebar nav a[aria-current="page"]{
+  color: #654f39 !important;
+  border-color: #d4c3ae !important;
+  background: #efe7da !important;
+  box-shadow: inset 3px 0 #a58a69 !important;
+}body[data-view="leader-assessment-evaluation"] .login-page,body[data-view="leader-assessment-evaluation"] .change-page{
+  background: radial-gradient(circle at 8% 12%, rgba(239,231,218,.9) 0 55px, transparent 56px),
+    radial-gradient(circle at 96% 18%, rgba(224,211,193,.48) 0 65px, transparent 66px),
+    linear-gradient(150deg, #fff 0%, #faf7f2 48%, #f2ece3 100%) !important;
+}body[data-view="leader-assessment-evaluation"] .brand-mark__person--primary{ background: linear-gradient(145deg, #c3ad91, #92775a) !important; }body[data-view="leader-assessment-evaluation"] .brand-mark__person--primary::before{ background: #a58a69 !important; }body[data-view="leader-assessment-evaluation"] .brand-mark__person--secondary{ background: linear-gradient(145deg, #bbb6aa, #8f9488) !important; }body[data-view="leader-assessment-evaluation"] .brand-mark__person--secondary::before{ background: #efe7da !important; }body[data-view="leader-assessment-evaluation"] .login-panel,body[data-view="leader-assessment-evaluation"] .detail-panel,body[data-view="leader-assessment-evaluation"] .progress-card,body[data-view="leader-assessment-evaluation"] .certification-card,body[data-view="leader-assessment-evaluation"] .pending-card,body[data-view="leader-assessment-evaluation"] .question-card,body[data-view="leader-assessment-evaluation"] .employee-card,body[data-view="leader-assessment-evaluation"] .person-summary,body[data-view="leader-assessment-evaluation"] .person-profile,body[data-view="leader-assessment-evaluation"] .question-bank-filter,body[data-view="leader-assessment-evaluation"] .question-bank-intro,body[data-view="leader-assessment-evaluation"] .assessment-search,body[data-view="leader-assessment-evaluation"] .assessment-note,body[data-view="leader-assessment-evaluation"] .evaluation-form,body[data-view="leader-assessment-evaluation"] .assessment-form,body[data-view="leader-assessment-evaluation"] .review-reminder,body[data-view="leader-assessment-evaluation"] .page-notice{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="leader-assessment-evaluation"] .login-panel__header h2::after{ background: #a58a69 !important; }body[data-view="leader-assessment-evaluation"] .form-field__control input,body[data-view="leader-assessment-evaluation"] .personnel-filter input,body[data-view="leader-assessment-evaluation"] .personnel-filter select,body[data-view="leader-assessment-evaluation"] .review-filter input,body[data-view="leader-assessment-evaluation"] .review-filter select,body[data-view="leader-assessment-evaluation"] .certification-tools input,body[data-view="leader-assessment-evaluation"] input,body[data-view="leader-assessment-evaluation"] select,body[data-view="leader-assessment-evaluation"] textarea{
+  color: var(--theme-text) !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment-evaluation"] input:focus,body[data-view="leader-assessment-evaluation"] select:focus,body[data-view="leader-assessment-evaluation"] textarea:focus{
+  border-color: #a58a69 !important;
+  box-shadow: 0 0 0 3px rgba(165,138,105,.15) !important;
+}body[data-view="leader-assessment-evaluation"] .form-field__icon,body[data-view="leader-assessment-evaluation"] .form-field__icon::after,body[data-view="leader-assessment-evaluation"] .form-field:nth-of-type(2) .form-field__icon::before{ border-color: #92775a !important; }body[data-view="leader-assessment-evaluation"] .login-form__submit,body[data-view="leader-assessment-evaluation"] .primary-action,body[data-view="leader-assessment-evaluation"] .pending-review > header button,body[data-view="leader-assessment-evaluation"] .personnel-filter button:last-child,body[data-view="leader-assessment-evaluation"] .review-actions button:not(.danger),body[data-view="leader-assessment-evaluation"] .form-actions button:last-child{
+  color: #fff !important;
+  border-color: #92775a !important;
+  background: linear-gradient(135deg, #b39b7f, #8f7457) !important;
+  box-shadow: 0 7px 17px rgba(99,79,58,.18) !important;
+}body[data-view="leader-assessment-evaluation"] .demo-notice,body[data-view="leader-assessment-evaluation"] .employee-label,body[data-view="leader-assessment-evaluation"] .demo-note,body[data-view="leader-assessment-evaluation"] .question-reminder,body[data-view="leader-assessment-evaluation"] .record-badge,body[data-view="leader-assessment-evaluation"] .assessment-note,body[data-view="leader-assessment-evaluation"] .page-notice{ color: #685d51 !important; background: #efe7da !important; }body[data-view="leader-assessment-evaluation"] .step-label,body[data-view="leader-assessment-evaluation"] .back-login,body[data-view="leader-assessment-evaluation"] .detail-link,body[data-view="leader-assessment-evaluation"] .detail-header a{ color: #80684f !important; }body[data-view="leader-assessment-evaluation"] .dashboard-summary article,body[data-view="leader-assessment-evaluation"] .pending-review,body[data-view="leader-assessment-evaluation"] .personnel-filter,body[data-view="leader-assessment-evaluation"] .personnel-list,body[data-view="leader-assessment-evaluation"] .certification-panel,body[data-view="leader-assessment-evaluation"] .review-filter,body[data-view="leader-assessment-evaluation"] .review-panel,body[data-view="leader-assessment-evaluation"] .profile-card,body[data-view="leader-assessment-evaluation"] .detail-tabs,body[data-view="leader-assessment-evaluation"] .detail-content,body[data-view="leader-assessment-evaluation"] .allowance,body[data-view="leader-assessment-evaluation"] .status-summary,body[data-view="leader-assessment-evaluation"] .certified-list,body[data-view="leader-assessment-evaluation"] .progress-list,body[data-view="leader-assessment-evaluation"] .pending-list,body[data-view="leader-assessment-evaluation"] .question-list,body[data-view="leader-assessment-evaluation"] .employee-list{
+  border-color: var(--theme-line) !important;
+  background: var(--theme-card) !important;
+  box-shadow: var(--shadow-card) !important;
+}body[data-view="leader-assessment-evaluation"] .dashboard-summary article::before{ background: #b49b7d !important; }body[data-view="leader-assessment-evaluation"] .dashboard-summary article:last-child::before{ background: #978a7a !important; }body[data-view="leader-assessment-evaluation"] .dashboard-summary a,body[data-view="leader-assessment-evaluation"] td a,body[data-view="leader-assessment-evaluation"] .detail-button,body[data-view="leader-assessment-evaluation"] .review-button,body[data-view="leader-assessment-evaluation"] .secondary-action,body[data-view="leader-assessment-evaluation"] .certification-tools button,body[data-view="leader-assessment-evaluation"] .review-filter button,body[data-view="leader-assessment-evaluation"] .personnel-filter .export-button{
+  color: #745d45 !important;
+  border-color: #b9a284 !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment-evaluation"] th{ color: #676b70 !important; background: #efe7da !important; }body[data-view="leader-assessment-evaluation"] td{ border-color: #e5dbce !important; }body[data-view="leader-assessment-evaluation"] tbody tr:hover td{ background: #faf5ee !important; }body[data-view="leader-assessment-evaluation"] .status-tabs button,body[data-view="leader-assessment-evaluation"] .certification-tabs button,body[data-view="leader-assessment-evaluation"] .assessment-tabs button{
+  color: #6c6258 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment-evaluation"] .status-tabs button[aria-selected="true"],body[data-view="leader-assessment-evaluation"] .certification-tabs button[aria-selected="true"],body[data-view="leader-assessment-evaluation"] .assessment-tabs button[aria-selected="true"]{
+  color: #654f39 !important;
+  border-color: #b9a284 !important;
+  background: #efe7da !important;
+}body[data-view="leader-assessment-evaluation"] .bottom-nav{
+  border-color: var(--theme-line) !important;
+  background: rgba(255,253,250,.96) !important;
+  box-shadow: 0 -8px 24px rgba(78,67,55,.08) !important;
+}body[data-view="leader-assessment-evaluation"] .bottom-nav a{ color: #7b7b79 !important; }body[data-view="leader-assessment-evaluation"] .bottom-nav a[aria-current="page"],body[data-view="leader-assessment-evaluation"] .bottom-nav a.active{ color: #80684f !important; }body[data-view="leader-assessment-evaluation"] .page-header button,body[data-view="leader-assessment-evaluation"] .home-header button,body[data-view="leader-assessment-evaluation"] .home-header__actions button{
+  color: #745d45 !important;
+  border-color: var(--theme-line) !important;
+  background: #fffdfa !important;
+}body[data-view="leader-assessment-evaluation"] .status.active,body[data-view="leader-assessment-evaluation"] .pass{ color: #59705f !important; background: #edf2ed !important; }body[data-view="leader-assessment-evaluation"] .status.discontinued{ color: #737373 !important; background: #f0ede9 !important; }body[data-view="leader-assessment-evaluation"] .review-actions .danger{ color: #9b5555 !important; border-color: #d2a4a4 !important; background: #fffafa !important; }body[data-view="leader-assessment-evaluation"] .empty-message{ color: #77736f !important; border-color: var(--theme-line) !important; background: #faf6f0 !important; }body[data-view="leader-assessment-evaluation"] dialog{ border-color: var(--theme-line) !important; background: #fffdfa !important; }body[data-view="leader-assessment-evaluation"] dialog::backdrop{ background: rgba(63,70,80,.3) !important; }body[data-view="leader-assessment-evaluation"] .maritime-scene{
+  background: linear-gradient(170deg,transparent 57%,rgba(226,215,200,.6) 58% 67%,transparent 68%),
+    linear-gradient(8deg,transparent 64%,rgba(239,231,218,.78) 65% 78%,transparent 79%),
+    linear-gradient(to bottom,transparent 62%,rgba(218,204,186,.42)) !important;
+}body[data-view="leader-assessment-evaluation"] .maritime-scene__lighthouse{ background: linear-gradient(to right,#d9cbb8,#fffdfa 45%,#baa383) !important; }body[data-view="leader-assessment-evaluation"] .maritime-scene__ship{ background: linear-gradient(145deg,#aaa397,#6f756f) !important; }body[data-view="leader-assessment-evaluation"] .login-page__waves{
+  background: radial-gradient(ellipse at 30% 0,rgba(239,231,218,.86),transparent 60%),
+    linear-gradient(to bottom,rgba(244,238,230,.9),rgba(222,211,196,.62)) !important;
+}
+
+@media (max-width: 620px) {body[data-view="leader-assessment-evaluation"] .admin-sidebar nav a{ background: #fffdfa !important; }body[data-view="leader-assessment-evaluation"] .admin-sidebar nav a[aria-current="page"]{ background: #efe7da !important; box-shadow: none !important; }body[data-view="leader-assessment-evaluation"] .pending-review tbody tr,body[data-view="leader-assessment-evaluation"] .personnel-list tbody tr,body[data-view="leader-assessment-evaluation"] .certification-panel tbody tr,body[data-view="leader-assessment-evaluation"] .review-panel tbody tr{
+    border-color: var(--theme-line) !important;
+    background: #fffdfa !important;
+  }
+}
+

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>人員認證管理系統</title><link rel="icon" type="image/svg+xml" href="assets/certification-icon.svg"><link rel="stylesheet" href="css/leader.css"></head><body><div id="view-root"></div><template id="view-leader-assessment" data-title="術科考核｜人員認證管理系統" data-class="">
+    <main class="assessment-page">
+      <header class="page-header">
+        <a href="user.html?view=home" aria-label="返回首頁">‹</a>
+        <h1>術科考核</h1>
+        <button type="button" aria-label="重新整理">更新</button>
+      </header>
+
+      <nav class="assessment-tabs" aria-label="考核狀態">
+        <button type="button" data-status="pending" aria-selected="true">待考核（6）</button>
+        <button type="button" data-status="completed" aria-selected="false">已考核（14）</button>
+      </nav>
+
+      <form class="assessment-search" role="search">
+        <label for="employee-search">搜尋屬下</label>
+        <input
+          id="employee-search"
+          name="employee-search"
+          type="search"
+          placeholder="搜尋屬下姓名、工號"
+        >
+      </form>
+
+      <section class="employee-list" aria-label="待考核屬下">
+        <article class="employee-card" data-status="pending">
+          <div>
+            <h2>李大華</h2>
+            <p>工號：E2025002</p>
+            <p>機械課</p>
+            <p>上次測驗：2026/06/20</p>
+          </div>
+          <span>待考核</span>
+          <a href="leader.html?view=leader-assessment-form&employee=E2025002">進入考核</a>
+        </article>
+
+        <article class="employee-card" data-status="pending">
+          <div>
+            <h2>張志強</h2>
+            <p>工號：E2025003</p>
+            <p>電焊課</p>
+            <p>上次測驗：2026/06/18</p>
+          </div>
+          <span>待考核</span>
+          <a href="leader.html?view=leader-assessment-form&employee=E2025003">進入考核</a>
+        </article>
+
+        <article class="employee-card" data-status="pending">
+          <div>
+            <h2>陳小美</h2>
+            <p>工號：E2025004</p>
+            <p>安環課</p>
+            <p>上次測驗：2026/06/22</p>
+          </div>
+          <span>待考核</span>
+          <a href="leader.html?view=leader-assessment-form&employee=E2025004">進入考核</a>
+        </article>
+
+        <article class="employee-card" data-status="pending">
+          <div>
+            <h2>林志遠</h2>
+            <p>工號：E2025005</p>
+            <p>天車課</p>
+            <p>上次測驗：2026/06/18</p>
+          </div>
+          <span>待考核</span>
+          <a href="leader.html?view=leader-assessment-form&employee=E2025005">進入考核</a>
+        </article>
+
+        <article class="employee-card" data-status="completed" hidden>
+          <div>
+            <h2>黃小豪</h2>
+            <p>工號：E2025006</p>
+            <p>船舶駕駛課</p>
+            <p>考核日期：2026/08/15</p>
+          </div>
+          <span>已送出待審</span>
+          <a href="#">查看結果</a>
+        </article>
+
+        <article class="employee-card" data-status="completed" hidden>
+          <div>
+            <h2>吳大偉</h2>
+            <p>工號：E2025007</p>
+            <p>化學品課</p>
+            <p>考核日期：2026/08/14</p>
+          </div>
+          <span>管理員核可</span>
+          <a href="#">查看結果</a>
+        </article>
+
+        <article class="employee-card" data-status="completed" hidden>
+          <div>
+            <h2>劉小玲</h2>
+            <p>工號：E2025008</p>
+            <p>鍋爐課</p>
+            <p>考核日期：2026/08/13</p>
+          </div>
+          <span>管理員核可</span>
+          <a href="#">查看結果</a>
+        </article>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要導覽">
+      <a href="user.html?view=home">首頁</a>
+      <a href="user.html?view=my-certifications">認證</a>
+      <a href="question-bank.html">題庫</a>
+    </nav>
+  </template>
+<template id="view-leader-assessment-form" data-title="術科考核評分｜人員認證管理系統" data-class="">
+    <main class="assessment-form-page">
+      <header class="page-header">
+        <a href="leader.html?view=leader-assessment" aria-label="返回考核清單">‹</a>
+        <h1>術科考核</h1>
+      </header>
+
+      <section class="employee-summary" aria-labelledby="employee-name">
+        <div>
+          <h2 id="employee-name">李大華</h2>
+          <span>在職</span>
+        </div>
+        <dl>
+          <div><dt>工號</dt><dd>E2025002</dd></div>
+          <div><dt>部門</dt><dd>機械課</dd></div>
+          <div><dt>職稱</dt><dd>堆高機操作人員</dd></div>
+          <div><dt>到職日</dt><dd>2023/03/15</dd></div>
+        </dl>
+      </section>
+
+      <form
+        class="assessment-form"
+        id="assessment-form"
+        action="leader.html?view=leader-assessment-evaluation"
+        method="get"
+      >
+        <section aria-labelledby="score-title">
+          <h2 id="score-title">術科測驗項目</h2>
+
+          <div class="score-table">
+            <div class="score-row score-row--header" aria-hidden="true">
+              <span>測驗項目</span>
+              <span>配分</span>
+              <span>得分</span>
+            </div>
+
+            <label class="score-row">
+              <span>1. 作業前檢查</span>
+              <span>20</span>
+              <input type="number" name="pre-check" min="0" max="20" value="18" required>
+            </label>
+
+            <label class="score-row">
+              <span>2. 操作程序</span>
+              <span>30</span>
+              <input type="number" name="operation" min="0" max="30" value="28" required>
+            </label>
+
+            <label class="score-row">
+              <span>3. 安全防護</span>
+              <span>20</span>
+              <input type="number" name="safety" min="0" max="20" value="19" required>
+            </label>
+
+            <label class="score-row">
+              <span>4. 異常處理</span>
+              <span>20</span>
+              <input type="number" name="exception" min="0" max="20" value="17" required>
+            </label>
+
+            <label class="score-row">
+              <span>5. 作業後檢整</span>
+              <span>10</span>
+              <input type="number" name="final-check" min="0" max="10" value="9" required>
+            </label>
+
+            <div class="score-total">
+              <strong>總分</strong>
+              <output id="total-score">91</output>
+            </div>
+          </div>
+        </section>
+
+        <label class="assessment-note">
+          備註（選填）
+          <textarea name="note" maxlength="200" rows="4" placeholder="可輸入其他補充說明"></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button type="button">暫存</button>
+          <button type="submit">下一步：考核評估</button>
+        </div>
+      </form>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要導覽">
+      <a href="user.html?view=home">首頁</a>
+      <a href="user.html?view=my-certifications">認證</a>
+      <a href="question-bank.html">題庫</a>
+    </nav>
+  </template>
+<template id="view-leader-assessment-evaluation" data-title="考核評估｜人員認證管理系統" data-class="">
+    <main class="evaluation-page">
+      <header class="page-header">
+        <a href="leader.html?view=leader-assessment-form" aria-label="返回術科評分">‹</a>
+        <h1>考核評估</h1>
+      </header>
+
+      <section class="employee-summary" aria-labelledby="employee-name">
+        <div>
+          <h2 id="employee-name">李大華</h2>
+          <span>在職</span>
+        </div>
+        <p>工號：E2025002</p>
+        <p>部門：機械課</p>
+        <p>職稱：堆高機操作人員</p>
+      </section>
+
+      <form class="evaluation-form" id="evaluation-form">
+        <fieldset>
+          <legend>考核評估</legend>
+
+          <label>
+            工作態度
+            <select name="work-attitude" required>
+              <option value="5">5 星－優秀</option>
+              <option value="4" selected>4 星－良好</option>
+              <option value="3">3 星－普通</option>
+              <option value="2">2 星－待加強</option>
+              <option value="1">1 星－不佳</option>
+            </select>
+          </label>
+
+          <label>
+            學習能力
+            <select name="learning-ability" required>
+              <option value="5" selected>5 星－優秀</option>
+              <option value="4">4 星－良好</option>
+              <option value="3">3 星－普通</option>
+              <option value="2">2 星－待加強</option>
+              <option value="1">1 星－不佳</option>
+            </select>
+          </label>
+
+          <label>
+            安全意識
+            <select name="safety-awareness" required>
+              <option value="5">5 星－優秀</option>
+              <option value="4" selected>4 星－良好</option>
+              <option value="3">3 星－普通</option>
+              <option value="2">2 星－待加強</option>
+              <option value="1">1 星－不佳</option>
+            </select>
+          </label>
+
+          <label>
+            團隊合作
+            <select name="teamwork" required>
+              <option value="5">5 星－優秀</option>
+              <option value="4" selected>4 星－良好</option>
+              <option value="3">3 星－普通</option>
+              <option value="2">2 星－待加強</option>
+              <option value="1">1 星－不佳</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <label class="result-field">
+          整體評核結果
+          <select name="result" required>
+            <option value="pass" selected>通過</option>
+            <option value="fail">不通過</option>
+          </select>
+        </label>
+
+        <label class="comment-field">
+          建議與提醒（選填）
+          <textarea name="comment" maxlength="200" rows="4" placeholder="請填寫考核建議"></textarea>
+        </label>
+
+        <div class="form-actions">
+          <a href="leader.html?view=leader-assessment-form">上一步</a>
+          <button type="submit">送出考核結果</button>
+        </div>
+      </form>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要導覽">
+      <a href="user.html?view=home">首頁</a>
+      <a href="user.html?view=my-certifications">認證</a>
+      <a href="question-bank.html">題庫</a>
+    </nav>
+  </template><script>(function(){const allowed=["leader-assessment","leader-assessment-form","leader-assessment-evaluation"],fallback="leader-assessment";const q=new URLSearchParams(location.search),v=allowed.includes(q.get('view'))?q.get('view'):fallback,t=document.querySelector('#view-'+v),root=document.querySelector('#view-root');document.body.dataset.view=v;document.body.className=t.dataset.class||'';document.title=t.dataset.title;root.replaceWith(t.content.cloneNode(true));})();</script><script src="js/auth.js"></script><script src="js/leader.js"></script></body></html>

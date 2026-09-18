@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>人員認證管理系統</title><link rel="icon" type="image/svg+xml" href="assets/certification-icon.svg"><link rel="stylesheet" href="css/admin.css"></head><body><div id="view-root"></div><template id="view-admin-dashboard" data-title="管理者首頁｜人員認證管理系統" data-class="">
+    <aside class="admin-sidebar">
+      <header>
+        <strong>人員認證管理系統</strong>
+        <span>管理者後台</span>
+      </header>
+
+      <nav aria-label="管理後台選單">
+        <a href="admin.html?view=admin-dashboard" aria-current="page">首頁</a>
+        <a href="admin.html?view=admin-personnel">人員管理</a>
+        <a href="admin.html?view=admin-certifications">認證項目管理</a>
+        <a href="admin.html?view=admin-review">審核中心</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header dashboard-header">
+        <div>
+          <h1>您好，管理者</h1>
+          <p>以下是今日需要您處理的重點事項</p>
+        </div>
+        <div class="dashboard-header-actions">
+          <button type="button" data-logout>登出</button>
+          <button class="notification-button" type="button" aria-label="查看 2 則通知">
+            <span aria-hidden="true">🔔</span><span class="notification-count">2</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="dashboard-summary" aria-label="管理摘要">
+        <article>
+          <div class="summary-content">
+            <h2>待審核項目</h2>
+            <div class="summary-meta">
+              <strong>8 件</strong>
+              <p>等待您審核的認證申請</p>
+            </div>
+          </div>
+          <a href="admin.html?view=admin-review">進入審核</a>
+        </article>
+
+        <article>
+          <div class="summary-content">
+            <h2>待安排認證</h2>
+            <div class="summary-meta">
+              <strong>6 人</strong>
+              <p>人員需要進行認證</p>
+            </div>
+          </div>
+          <a href="admin.html?view=admin-personnel">查看人員</a>
+        </article>
+
+      </section>
+
+      <section class="pending-review" aria-labelledby="pending-review-title">
+        <header>
+          <h2 id="pending-review-title">待審核項目</h2>
+          <button type="button">批次審核</button>
+        </header>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">申請人</th>
+                <th scope="col">工號</th>
+                <th scope="col">認證項目</th>
+                <th scope="col">申請時間</th>
+                <th scope="col">狀態</th>
+                <th scope="col">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>王小明</td>
+                <td>A12345</td>
+                <td>高空作業人員</td>
+                <td>2026/08/19 09:15</td>
+                <td>待審核</td>
+                <td><a href="admin.html?view=admin-review">審核</a></td>
+              </tr>
+              <tr>
+                <td>李大華</td>
+                <td>B23456</td>
+                <td>堆高機操作人員</td>
+                <td>2026/08/19 08:47</td>
+                <td>待審核</td>
+                <td><a href="admin.html?view=admin-review">審核</a></td>
+              </tr>
+              <tr>
+                <td>張志強</td>
+                <td>C34567</td>
+                <td>電焊作業人員</td>
+                <td>2026/08/18 16:22</td>
+                <td>待審核</td>
+                <td><a href="admin.html?view=admin-review">審核</a></td>
+              </tr>
+              <tr>
+                <td>陳小美</td>
+                <td>D45678</td>
+                <td>急救人員</td>
+                <td>2026/08/18 14:05</td>
+                <td>待審核</td>
+                <td><a href="admin.html?view=admin-review">審核</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </template>
+<template id="view-admin-personnel" data-title="人員管理｜人員認證管理系統" data-class="">
+    <aside class="admin-sidebar">
+      <header>
+        <strong>人員認證管理系統</strong>
+        <span>管理者後台</span>
+      </header>
+      <nav aria-label="管理後台選單">
+        <a href="admin.html?view=admin-dashboard">首頁</a>
+        <a href="admin.html?view=admin-personnel" aria-current="page">人員管理</a>
+        <a href="admin.html?view=admin-certifications">認證項目管理</a>
+        <a href="admin.html?view=admin-review">審核中心</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <h1>人員管理</h1>
+          <p>管理人員基本資料與認證狀態</p>
+        </div>
+        <button type="button" data-logout>登出</button>
+      </header>
+
+      <form class="personnel-filter" id="personnel-filter" role="search">
+        <label>
+          搜尋人員
+          <input id="personnel-search" type="search" placeholder="搜尋姓名、工號、部門">
+        </label>
+        <label>
+          部門
+          <select id="department-filter">
+            <option value="all">全部</option>
+            <option value="machine">機械課</option>
+            <option value="welding">電焊課</option>
+            <option value="safety">安環課</option>
+          </select>
+        </label>
+        <label>
+          在職狀態
+          <select id="employment-filter">
+            <option value="all">全部</option>
+            <option value="active">在職</option>
+            <option value="inactive">離職</option>
+          </select>
+        </label>
+        <label>
+          認證狀態
+          <select id="certification-filter">
+            <option value="all">全部</option>
+            <option value="certified">已認證</option>
+            <option value="in-progress">進行中</option>
+            <option value="pending">待審核</option>
+          </select>
+        </label>
+        <button class="export-button" id="export-personnel" type="button">匯出清單</button>
+        <button class="add-person-button" id="add-person" type="button">新增人員</button>
+      </form>
+
+      <section class="personnel-list" aria-labelledby="personnel-title">
+        <h2 id="personnel-title">人員清單</h2>
+        <p id="personnel-count" class="result-count" aria-live="polite"></p>
+        <p id="empty-personnel" class="empty-message" hidden>找不到符合條件的人員。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">姓名</th>
+                <th scope="col">工號</th>
+                <th scope="col">部門</th>
+                <th scope="col">在職狀態</th>
+                <th scope="col">已認證</th>
+                <th scope="col">進行中</th>
+                <th scope="col">待審核</th>
+                <th scope="col">每月加給</th>
+                <th scope="col">操作</th>
+              </tr>
+            </thead>
+            <tbody id="personnel-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <dialog id="person-dialog">
+        <form id="person-form" method="dialog" novalidate>
+          <h2>新增人員</h2>
+          <label>工號<input id="new-employee-id" maxlength="20" autocomplete="off" required placeholder="例如：E2025006"></label>
+          <label>姓名<input id="new-employee-name" maxlength="30" autocomplete="off" required placeholder="請輸入姓名"></label>
+          <label>部門<select id="new-department" required><option value="">請選擇部門</option><option>機械課</option><option>電焊課</option><option>安環課</option><option>天車課</option><option>其他</option></select></label>
+          <label>在職狀態<select id="new-employment"><option value="active">在職</option><option value="inactive">離職</option></select></label>
+          <p id="person-form-error" class="form-error" aria-live="polite"></p>
+          <div class="dialog-actions"><button value="cancel" type="submit">取消</button><button id="save-person" value="default" type="submit">新增人員</button></div>
+        </form>
+      </dialog>
+    </main>
+  </template>
+<template id="view-admin-personnel-detail" data-title="人員詳細資料｜人員認證管理系統" data-class="">
+    <aside class="admin-sidebar">
+      <header>
+        <strong>人員認證管理系統</strong>
+        <span>管理者後台</span>
+      </header>
+      <nav aria-label="管理後台選單">
+        <a href="admin.html?view=admin-dashboard">首頁</a>
+        <a href="admin.html?view=admin-personnel" aria-current="page">人員管理</a>
+        <a href="admin.html?view=admin-certifications">認證項目管理</a>
+        <a href="admin.html?view=admin-review">審核中心</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <h1>人員管理／人員詳情</h1>
+          <a href="admin.html?view=admin-personnel">返回人員列表</a>
+        </div>
+        <button type="button" data-logout>登出</button>
+      </header>
+
+      <section class="person-profile" aria-labelledby="person-name">
+        <div>
+          <h2 id="person-name">王小明</h2>
+          <span>在職</span>
+        </div>
+        <dl>
+          <div><dt>工號</dt><dd>E2025001</dd></div>
+          <div><dt>部門</dt><dd>機械課</dd></div>
+          <div><dt>職稱</dt><dd>技術員</dd></div>
+          <div><dt>到職日</dt><dd>2023/03/15</dd></div>
+        </dl>
+        <div class="profile-actions">
+          <button type="button">編輯基本資料</button>
+          <button type="button">開啟認證</button>
+        </div>
+      </section>
+
+      <nav class="detail-tabs" aria-label="人員資料分類">
+        <button type="button" aria-selected="true">認證狀態</button>
+        <button type="button" aria-selected="false">基本資料</button>
+        <button type="button" aria-selected="false">考試紀錄</button>
+        <button type="button" aria-selected="false">組長考核紀錄</button>
+        <button type="button" aria-selected="false">操作紀錄</button>
+      </nav>
+
+      <div class="detail-layout">
+        <section class="certification-status" aria-label="認證狀態">
+          <section>
+            <h2>已認證（3）</h2>
+            <div class="table-wrapper">
+              <table>
+                <thead><tr><th>認證項目</th><th>取得日期</th><th>有效期限</th><th>加給金額</th><th>狀態</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="認證項目">高空作業人員</td><td data-label="取得日期">2024/05/10</td><td data-label="有效期限">2027/05/09</td><td data-label="加給金額">NT$ 1,000</td><td data-label="狀態">有效</td></tr>
+                  <tr><td data-label="認證項目">天車操作人員</td><td data-label="取得日期">2024/03/20</td><td data-label="有效期限">2027/03/19</td><td data-label="加給金額">NT$ 800</td><td data-label="狀態">有效</td></tr>
+                  <tr><td data-label="認證項目">急救人員</td><td data-label="取得日期">2024/07/05</td><td data-label="有效期限">2027/07/04</td><td data-label="加給金額">NT$ 1,200</td><td data-label="狀態">有效</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2>進行中（1）</h2>
+            <p><strong>起重機操作人員</strong>－組長考核中，預計完成日 2026/08/25</p>
+          </section>
+
+          <section>
+            <h2>待審核（1）</h2>
+            <p><strong>化學品調配作業人員</strong>－申請日期 2026/08/19</p>
+          </section>
+        </section>
+
+        <aside class="person-summary">
+          <section>
+            <h2>認證加給總覽</h2>
+            <p>每月認證加給總額</p>
+            <strong>NT$ 3,000</strong>
+            <ul>
+              <li>高空作業人員：NT$ 1,000</li>
+              <li>天車操作人員：NT$ 800</li>
+              <li>急救人員：NT$ 1,200</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>認證申請歷史</h2>
+            <ul>
+              <li>2026/08/19－申請化學品調配作業人員</li>
+              <li>2026/07/20－申請起重機操作人員</li>
+              <li>2024/07/05－取得急救人員認證</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </template>
+<template id="view-admin-certifications" data-title="認證項目管理｜人員認證管理系統" data-class="">
+    <aside class="admin-sidebar">
+      <header><strong>人員認證管理系統</strong><span>管理者後台</span></header>
+      <nav aria-label="管理後台選單">
+        <a href="admin.html?view=admin-dashboard">首頁</a>
+        <a href="admin.html?view=admin-personnel">人員管理</a>
+        <a href="admin.html?view=admin-certifications" aria-current="page">認證項目管理</a>
+        <a href="admin.html?view=admin-review">審核中心</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-header">
+        <div><h1>認證項目管理</h1><p>查看全部認證項目與已停產項目</p></div>
+        <button type="button" data-logout>登出</button>
+      </header>
+      <section class="certification-panel">
+        <div class="certification-tools">
+          <label><span class="sr-only">搜尋認證項目</span><input id="certification-search" type="search" placeholder="搜尋認證項目名稱"></label>
+          <button id="reset-certifications" class="secondary-action" type="button">重新整理</button>
+          <button id="add-certification" class="primary-action" type="button">＋ 新增認證項目</button>
+        </div>
+        <div class="certification-tabs" role="tablist" aria-label="項目狀態">
+          <button type="button" data-status="all" aria-selected="true">全部項目</button>
+          <button type="button" data-status="discontinued" aria-selected="false">已停產項目</button>
+        </div>
+        <p id="empty-message" class="empty-message" hidden>找不到符合條件的認證項目。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>認證項目名稱</th><th>認證類別</th><th>效期</th><th>每月加給</th><th>狀態</th><th>通過人數</th><th>操作</th></tr></thead>
+            <tbody id="certification-list">
+              <tr data-status="active"><td>天車操作認證</td><td>機械操作</td><td>2 年</td><td>NT$ 500</td><td><span class="status active">啟用中</span></td><td>18</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="active"><td>堆高機操作認證</td><td>機械操作</td><td>2 年</td><td>NT$ 500</td><td><span class="status active">啟用中</span></td><td>22</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="active"><td>急救人員認證</td><td>安全衛生</td><td>3 年</td><td>NT$ 300</td><td><span class="status active">啟用中</span></td><td>27</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="active"><td>高空作業認證</td><td>安全衛生</td><td>2 年</td><td>NT$ 600</td><td><span class="status active">啟用中</span></td><td>24</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="discontinued"><td>舊式鋼爐操作認證</td><td>機械操作</td><td>2 年</td><td>NT$ 400</td><td><span class="status discontinued">已停產</span></td><td>6</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="discontinued"><td>輻射作業認證</td><td>特殊作業</td><td>2 年</td><td>NT$ 800</td><td><span class="status discontinued">已停產</span></td><td>3</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="result-count" class="result-count" aria-live="polite"></p>
+      </section>
+      <dialog id="certification-dialog"><form id="certification-form" method="dialog">
+        <h2 id="dialog-title">新增認證項目</h2><input id="edit-index" type="hidden">
+        <label>認證項目名稱<input id="certification-name" maxlength="40" required></label>
+        <label>認證類別<select id="certification-category" required><option value="">請選擇</option><option>機械操作</option><option>安全衛生</option><option>電氣</option><option>特殊作業</option><option>其他</option></select></label>
+        <div class="form-row"><label>效期（年）<input id="certification-years" type="number" min="1" max="20" required></label><label>每月加給（元）<input id="certification-allowance" type="number" min="0" step="100" required></label></div>
+        <label>項目狀態<select id="certification-status"><option value="active">啟用中</option><option value="discontinued">已停產</option></select></label>
+        <p id="form-error" class="form-error" aria-live="polite"></p>
+        <div class="dialog-actions"><button value="cancel" type="submit">取消</button><button id="save-certification" value="default" type="submit">儲存</button></div>
+      </form></dialog>
+    </main>
+  </template>
+<template id="view-admin-review" data-title="審核中心｜人員認證管理系統" data-class="">
+    <aside class="admin-sidebar">
+      <header><strong>人員認證管理系統</strong><span>管理者後台</span></header>
+      <nav aria-label="管理後台選單">
+        <a href="admin.html?view=admin-dashboard">首頁</a><a href="admin.html?view=admin-personnel">人員管理</a>
+        <a href="admin.html?view=admin-certifications">認證項目管理</a>
+        <a href="admin.html?view=admin-review" aria-current="page">審核中心</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-header">
+        <div><h1>審核中心</h1><p>僅顯示學科與組長考核皆通過、等待最終審核的申請</p></div>
+        <button type="button" data-logout>登出</button>
+      </header>
+      <form class="review-filter" role="search">
+        <label>搜尋<input id="review-search" type="search" placeholder="姓名、工號或認證項目"></label>
+        <label>部門<select id="department-filter"><option value="all">全部</option><option>機械課</option><option>電焊課</option><option>安環課</option></select></label>
+        <label>認證項目<select id="certification-filter"><option value="all">全部</option><option>高空作業認證</option><option>堆高機操作認證</option><option>電焊作業認證</option><option>急救人員認證</option></select></label>
+        <button id="reset-review" type="button">重設</button>
+      </form>
+      <section class="review-panel" aria-labelledby="review-title">
+        <div class="review-actions">
+          <div><h2 id="review-title">待審核清單</h2><p id="selection-message">尚未選取申請</p></div>
+          <button id="batch-approve" type="button" disabled>批次通過</button>
+          <button id="batch-reject" class="danger" type="button" disabled>批次駁回</button>
+        </div>
+        <p id="empty-review" class="empty-message" hidden>找不到符合條件的待審核申請。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th><input id="select-all" type="checkbox" aria-label="選取目前所有申請"></th><th>申請人</th><th>工號</th><th>部門</th><th>認證項目</th><th>學科</th><th>組長考核</th><th>操作</th></tr></thead>
+            <tbody id="review-list">
+              <tr><td><input class="row-check" type="checkbox" aria-label="選取王小明"></td><td>王小明</td><td>E2025001</td><td>機械課</td><td>高空作業認證</td><td><span class="pass">88 分／通過</span></td><td><span class="pass">張組長／通過</span></td><td><button class="review-button" type="button">檢視</button></td></tr>
+              <tr><td><input class="row-check" type="checkbox" aria-label="選取李大華"></td><td>李大華</td><td>E2025002</td><td>機械課</td><td>堆高機操作認證</td><td><span class="pass">92 分／通過</span></td><td><span class="pass">劉組長／通過</span></td><td><button class="review-button" type="button">檢視</button></td></tr>
+              <tr><td><input class="row-check" type="checkbox" aria-label="選取張志強"></td><td>張志強</td><td>E2025003</td><td>電焊課</td><td>電焊作業認證</td><td><span class="pass">85 分／通過</span></td><td><span class="pass">王組長／通過</span></td><td><button class="review-button" type="button">檢視</button></td></tr>
+              <tr><td><input class="row-check" type="checkbox" aria-label="選取陳小美"></td><td>陳小美</td><td>E2025004</td><td>安環課</td><td>急救人員認證</td><td><span class="pass">90 分／通過</span></td><td><span class="pass">林組長／通過</span></td><td><button class="review-button" type="button">檢視</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="review-count" class="result-count" aria-live="polite"></p>
+      </section>
+      <dialog id="review-dialog">
+        <form id="review-form" method="dialog">
+          <h2 id="dialog-title">審核申請</h2><p id="dialog-summary"></p>
+          <label id="reason-field" hidden>駁回原因<textarea id="reject-reason" rows="4" maxlength="200" placeholder="請輸入駁回原因"></textarea></label>
+          <p id="dialog-error" class="dialog-error" aria-live="polite"></p>
+          <div class="dialog-actions"><button value="cancel" type="submit">取消</button><button id="confirm-action" value="default" type="submit">確認</button></div>
+        </form>
+      </dialog>
+    </main>
+  </template><script>(function(){const allowed=["admin-dashboard","admin-personnel","admin-personnel-detail","admin-certifications","admin-review"],fallback="admin-dashboard";const q=new URLSearchParams(location.search),v=allowed.includes(q.get('view'))?q.get('view'):fallback,t=document.querySelector('#view-'+v),root=document.querySelector('#view-root');document.body.dataset.view=v;document.body.className=t.dataset.class||'';document.title=t.dataset.title;root.replaceWith(t.content.cloneNode(true));})();</script><script src="js/auth.js"></script><script src="js/admin.js"></script></body></html>

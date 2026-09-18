@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>人員認證管理系統</title><link rel="icon" type="image/svg+xml" href="assets/certification-icon.svg"><link rel="stylesheet" href="css/auth.css"></head><body><div id="view-root"></div><template id="view-login" data-title="登入｜人員認證管理系統" data-class="">
+    <main class="login-page">
+      <section class="login-brand" aria-labelledby="system-title">
+        <div class="brand-mark" aria-hidden="true">
+          <span class="brand-mark__person brand-mark__person--primary"></span>
+          <span class="brand-mark__person brand-mark__person--secondary"></span>
+          <span class="brand-mark__accent"></span>
+        </div>
+
+        <h1 id="system-title">人員認證管理系統</h1>
+        <p lang="en">Certification Management System</p>
+        <p>每一次學習與認證，都是讓自己更有價值的累積 💪</p>
+
+        <div class="maritime-scene" aria-hidden="true">
+          <div class="maritime-scene__lighthouse"></div>
+          <div class="maritime-scene__ship"></div>
+        </div>
+      </section>
+
+      <section class="login-panel" aria-labelledby="login-title">
+        <header class="login-panel__header">
+          <h2 id="login-title">登入系統</h2>
+          <p>請輸入您的人員工號與密碼</p>
+        </header>
+
+        <form class="login-form" id="login-form" novalidate>
+          <div class="form-field">
+            <label for="account">人員工號</label>
+            <div class="form-field__control">
+              <span class="form-field__icon" aria-hidden="true"></span>
+              <input
+                id="account"
+                name="account"
+                type="text"
+                autocomplete="username"
+                placeholder="請輸入人員工號"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="password">密碼</label>
+            <div class="form-field__control">
+              <span class="form-field__icon" aria-hidden="true"></span>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="請輸入密碼"
+                required
+              >
+              <button
+                class="password-toggle"
+                type="button"
+                aria-label="顯示密碼"
+                aria-controls="password"
+                aria-pressed="false"
+              >
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+          <p class="login-form__message" id="login-message" role="status" aria-live="polite"></p>
+
+          <button class="login-form__submit" type="submit">登入</button>
+        </form>
+        <p class="demo-notice">前端測試模式<br>一般人員：E2025001<br>管理者：A2025001<br>首次密碼與工號相同，登入後須設定新密碼。<br>請勿輸入正式密碼；設定僅保留於目前分頁。</p>
+      </section>
+
+      <div class="login-page__waves" aria-hidden="true"></div>
+    </main>
+  </template>
+<template id="view-change-password" data-title="首次設定密碼｜人員認證管理系統" data-class="">
+    <main class="change-page">
+      <section class="login-panel" aria-labelledby="change-title">
+        <header class="login-panel__header">
+          <p class="step-label">首次登入 · 設定個人密碼</p>
+          <h1 id="change-title">設定您的新密碼</h1>
+          <p>完成密碼設定後，即可進入系統。</p>
+        </header>
+        <p class="employee-label">人員工號：<strong id="employee-id"></strong></p>
+        <form class="login-form" id="change-password-form" novalidate>
+          <div class="password-field">
+            <label for="new-password">新密碼</label>
+            <div class="form-field__control">
+              <input id="new-password" type="password" autocomplete="new-password" required minlength="8" aria-describedby="password-rules" autofocus>
+              <button class="password-toggle" type="button" data-toggle="new-password" aria-controls="new-password" aria-label="顯示新密碼" aria-pressed="false"><span aria-hidden="true"></span></button>
+            </div>
+          </div>
+          <ul class="password-rules" id="password-rules">
+            <li>至少 8 碼</li>
+            <li>同時包含英文字母與數字</li>
+            <li>不可與工號（預設密碼）相同</li>
+          </ul>
+          <div class="password-field">
+            <label for="confirm-password">確認新密碼</label>
+            <div class="form-field__control">
+              <input id="confirm-password" type="password" autocomplete="new-password" required>
+              <button class="password-toggle" type="button" data-toggle="confirm-password" aria-controls="confirm-password" aria-label="顯示確認密碼" aria-pressed="false"><span aria-hidden="true"></span></button>
+            </div>
+          </div>
+          <p class="login-form__message" id="change-message" role="status" aria-live="polite"></p>
+          <button class="login-form__submit" type="submit">儲存密碼並進入系統</button>
+          <button class="back-login" type="button" data-logout>登出並返回登入頁</button>
+        </form>
+        <p class="demo-notice">前端測試模式：請使用測試密碼。設定僅保留於目前分頁，尚未連接公司帳號。</p>
+      </section>
+    </main>
+  </template><script>(function(){const allowed=["login","change-password"],fallback="login";const q=new URLSearchParams(location.search),v=allowed.includes(q.get('view'))?q.get('view'):fallback,t=document.querySelector('#view-'+v),root=document.querySelector('#view-root');document.body.dataset.view=v;document.body.className=t.dataset.class||'';document.title=t.dataset.title;root.replaceWith(t.content.cloneNode(true));})();</script><script src="js/auth.js"></script></body></html>
