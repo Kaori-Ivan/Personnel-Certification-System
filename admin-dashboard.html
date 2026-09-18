@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <script src="../js/core/auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="人員認證管理系統管理者首頁">
+    <title>管理者首頁｜人員認證管理系統</title>
+    <link rel="stylesheet" href="../css/pages/admin-dashboard.css">
+  </head>
+
+  <body>
+    <aside class="admin-sidebar">
+      <header>
+        <strong>人員認證管理系統</strong>
+        <span>管理者後台</span>
+      </header>
+
+      <nav aria-label="管理後台選單">
+        <a href="admin-dashboard.html" aria-current="page">首頁</a>
+        <a href="admin-personnel.html">人員管理</a>
+        <a href="admin-certifications.html">認證項目管理</a>
+        <a href="admin-review.html">審核中心</a>
+        
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <h1>您好，管理者</h1>
+          <p>以下是今日需要您處理的重點事項</p>
+        </div>
+        <button type="button" aria-label="查看通知">通知（2）</button>
+        <button type="button" data-logout>登出</button>
+      </header>
+
+      <section class="dashboard-summary" aria-label="管理摘要">
+        <article>
+          <h2>待審核項目</h2>
+          <strong>8 件</strong>
+          <p>等待您審核的認證申請</p>
+          <a href="admin-review.html">進入審核</a>
+        </article>
+
+        <article>
+          <h2>待安排認證</h2>
+          <strong>6 人</strong>
+          <p>人員需要進行認證</p>
+          <a href="admin-personnel.html">查看人員</a>
+        </article>
+      </section>
+
+      <section class="pending-review" aria-labelledby="pending-review-title">
+        <header>
+          <h2 id="pending-review-title">待審核項目</h2>
+          <button type="button">批次審核</button>
+        </header>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">申請人</th>
+                <th scope="col">工號</th>
+                <th scope="col">認證項目</th>
+                <th scope="col">申請時間</th>
+                <th scope="col">狀態</th>
+                <th scope="col">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>王小明</td>
+                <td>A12345</td>
+                <td>高空作業人員</td>
+                <td>2026/08/19 09:15</td>
+                <td>待審核</td>
+                <td><a href="admin-review.html">審核</a></td>
+              </tr>
+              <tr>
+                <td>李大華</td>
+                <td>B23456</td>
+                <td>堆高機操作人員</td>
+                <td>2026/08/19 08:47</td>
+                <td>待審核</td>
+                <td><a href="admin-review.html">審核</a></td>
+              </tr>
+              <tr>
+                <td>張志強</td>
+                <td>C34567</td>
+                <td>電焊作業人員</td>
+                <td>2026/08/18 16:22</td>
+                <td>待審核</td>
+                <td><a href="admin-review.html">審核</a></td>
+              </tr>
+              <tr>
+                <td>陳小美</td>
+                <td>D45678</td>
+                <td>急救人員</td>
+                <td>2026/08/18 14:05</td>
+                <td>待審核</td>
+                <td><a href="admin-review.html">審核</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

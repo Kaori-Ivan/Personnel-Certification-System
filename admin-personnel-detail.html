@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <script src="../js/core/auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="查看人員資料與認證紀錄">
+    <title>人員詳細資料｜人員認證管理系統</title>
+  </head>
+
+  <body>
+    <aside class="admin-sidebar">
+      <header>
+        <strong>人員認證管理系統</strong>
+        <span>管理者後台</span>
+      </header>
+      <nav aria-label="管理後台選單">
+        <a href="admin-dashboard.html">首頁</a>
+        <a href="admin-personnel.html" aria-current="page">人員管理</a>
+        <a href="admin-certifications.html">認證項目管理</a>
+        <a href="admin-review.html">審核中心</a>
+        
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <h1>人員管理／人員詳情</h1>
+          <a href="admin-personnel.html">返回人員列表</a>
+        </div>
+        <button type="button">通知（2）</button>
+        <button type="button" data-logout>登出</button>
+      </header>
+
+      <section class="person-profile" aria-labelledby="person-name">
+        <div>
+          <h2 id="person-name">王小明</h2>
+          <span>在職</span>
+        </div>
+        <dl>
+          <div><dt>工號</dt><dd>E2025001</dd></div>
+          <div><dt>部門</dt><dd>機械課</dd></div>
+          <div><dt>職稱</dt><dd>技術員</dd></div>
+          <div><dt>到職日</dt><dd>2023/03/15</dd></div>
+        </dl>
+        <div class="profile-actions">
+          <button type="button">編輯基本資料</button>
+          <button type="button">開啟認證</button>
+        </div>
+      </section>
+
+      <nav class="detail-tabs" aria-label="人員資料分類">
+        <button type="button" aria-selected="true">認證狀態</button>
+        <button type="button" aria-selected="false">基本資料</button>
+        <button type="button" aria-selected="false">考試紀錄</button>
+        <button type="button" aria-selected="false">組長考核紀錄</button>
+        <button type="button" aria-selected="false">操作紀錄</button>
+      </nav>
+
+      <div class="detail-layout">
+        <section class="certification-status" aria-label="認證狀態">
+          <section>
+            <h2>已認證（3）</h2>
+            <div class="table-wrapper">
+              <table>
+                <thead><tr><th>認證項目</th><th>取得日期</th><th>有效期限</th><th>加給金額</th><th>狀態</th></tr></thead>
+                <tbody>
+                  <tr><td>高空作業人員</td><td>2024/05/10</td><td>2027/05/09</td><td>NT$ 1,000</td><td>有效</td></tr>
+                  <tr><td>天車操作人員</td><td>2024/03/20</td><td>2027/03/19</td><td>NT$ 800</td><td>有效</td></tr>
+                  <tr><td>急救人員</td><td>2024/07/05</td><td>2027/07/04</td><td>NT$ 1,200</td><td>有效</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2>進行中（1）</h2>
+            <p><strong>起重機操作人員</strong>－組長考核中，預計完成日 2026/08/25</p>
+          </section>
+
+          <section>
+            <h2>待審核（1）</h2>
+            <p><strong>化學品調配作業人員</strong>－申請日期 2026/08/19</p>
+          </section>
+        </section>
+
+        <aside class="person-summary">
+          <section>
+            <h2>認證加給總覽</h2>
+            <p>每月認證加給總額</p>
+            <strong>NT$ 3,000</strong>
+            <ul>
+              <li>高空作業人員：NT$ 1,000</li>
+              <li>天車操作人員：NT$ 800</li>
+              <li>急救人員：NT$ 1,200</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>認證申請歷史</h2>
+            <ul>
+              <li>2026/08/19－申請化學品調配作業人員</li>
+              <li>2026/07/20－申請起重機操作人員</li>
+              <li>2024/07/05－取得急救人員認證</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

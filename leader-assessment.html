@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <script src="../js/core/auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="組長術科考核屬下清單">
+    <title>術科考核｜人員認證管理系統</title>
+    <link rel="stylesheet" href="../css/pages/leader-assessment.css">
+    <script src="../js/pages/leader-assessment.js" defer></script>
+  </head>
+
+  <body>
+    <main class="assessment-page">
+      <header class="page-header">
+        <a href="home.html" aria-label="返回首頁">‹</a>
+        <h1>術科考核</h1>
+        <button type="button" aria-label="重新整理">更新</button>
+      </header>
+
+      <nav class="assessment-tabs" aria-label="考核狀態">
+        <button type="button" data-status="pending" aria-selected="true">待考核（6）</button>
+        <button type="button" data-status="completed" aria-selected="false">已考核（14）</button>
+      </nav>
+
+      <form class="assessment-search" role="search">
+        <label for="employee-search">搜尋屬下</label>
+        <input
+          id="employee-search"
+          name="employee-search"
+          type="search"
+          placeholder="搜尋屬下姓名、工號"
+        >
+      </form>
+
+      <section class="employee-list" aria-label="待考核屬下">
+        <article class="employee-card" data-status="pending">
+          <div>
+            <h2>李大華</h2>
+            <p>工號：E2025002</p>
+            <p>機械課</p>
+            <p>上次測驗：2026/06/20</p>
+          </div>
+          <span>待考核</span>
+          <a href="leader-assessment-form.html?employee=E2025002">進入考核</a>
+        </article>
+
+        <article class="employee-card" data-status="pending">
+          <div>
+            <h2>張志強</h2>
+            <p>工號：E2025003</p>
+            <p>電焊課</p>
+            <p>上次測驗：2026/06/18</p>
+          </div>
+          <span>待考核</span>
+          <a href="leader-assessment-form.html?employee=E2025003">進入考核</a>
+        </article>
+
+        <article class="employee-card" data-status="pending">
+          <div>
+            <h2>陳小美</h2>
+            <p>工號：E2025004</p>
+            <p>安環課</p>
+            <p>上次測驗：2026/06/22</p>
+          </div>
+          <span>待考核</span>
+          <a href="leader-assessment-form.html?employee=E2025004">進入考核</a>
+        </article>
+
+        <article class="employee-card" data-status="pending">
+          <div>
+            <h2>林志遠</h2>
+            <p>工號：E2025005</p>
+            <p>天車課</p>
+            <p>上次測驗：2026/06/18</p>
+          </div>
+          <span>待考核</span>
+          <a href="leader-assessment-form.html?employee=E2025005">進入考核</a>
+        </article>
+
+        <article class="employee-card" data-status="completed" hidden>
+          <div>
+            <h2>黃小豪</h2>
+            <p>工號：E2025006</p>
+            <p>船舶駕駛課</p>
+            <p>考核日期：2026/08/15</p>
+          </div>
+          <span>已送出待審</span>
+          <a href="#">查看結果</a>
+        </article>
+
+        <article class="employee-card" data-status="completed" hidden>
+          <div>
+            <h2>吳大偉</h2>
+            <p>工號：E2025007</p>
+            <p>化學品課</p>
+            <p>考核日期：2026/08/14</p>
+          </div>
+          <span>管理員核可</span>
+          <a href="#">查看結果</a>
+        </article>
+
+        <article class="employee-card" data-status="completed" hidden>
+          <div>
+            <h2>劉小玲</h2>
+            <p>工號：E2025008</p>
+            <p>鍋爐課</p>
+            <p>考核日期：2026/08/13</p>
+          </div>
+          <span>管理員核可</span>
+          <a href="#">查看結果</a>
+        </article>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要導覽">
+      <a href="home.html">首頁</a>
+      <a href="my-certifications.html">認證</a>
+      <a href="question-bank.html">題庫</a>
+    </nav>
+  </body>
+</html>

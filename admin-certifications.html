@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <script src="../js/core/auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="管理認證項目與停產狀態">
+    <title>認證項目管理｜人員認證管理系統</title>
+    <link rel="stylesheet" href="../css/pages/admin-personnel.css">
+    <link rel="stylesheet" href="../css/pages/admin-certifications.css">
+    <script src="../js/pages/admin-certifications.js" defer></script>
+  </head>
+  <body>
+    <aside class="admin-sidebar">
+      <header><strong>人員認證管理系統</strong><span>管理者後台</span></header>
+      <nav aria-label="管理後台選單">
+        <a href="admin-dashboard.html">首頁</a>
+        <a href="admin-personnel.html">人員管理</a>
+        <a href="admin-certifications.html" aria-current="page">認證項目管理</a>
+        <a href="admin-review.html">審核中心</a>
+        
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-header">
+        <div><h1>認證項目管理</h1><p>查看全部認證項目與已停產項目</p></div>
+        <button type="button">通知（2）</button><button type="button" data-logout>登出</button>
+      </header>
+      <section class="certification-panel">
+        <div class="certification-tools">
+          <label><span class="sr-only">搜尋認證項目</span><input id="certification-search" type="search" placeholder="搜尋認證項目名稱"></label>
+          <button id="reset-certifications" class="secondary-action" type="button">重新整理</button>
+          <button id="add-certification" class="primary-action" type="button">＋ 新增認證項目</button>
+        </div>
+        <div class="certification-tabs" role="tablist" aria-label="項目狀態">
+          <button type="button" data-status="all" aria-selected="true">全部項目</button>
+          <button type="button" data-status="discontinued" aria-selected="false">已停產項目</button>
+        </div>
+        <p id="empty-message" class="empty-message" hidden>找不到符合條件的認證項目。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>認證項目名稱</th><th>認證類別</th><th>效期</th><th>每月加給</th><th>狀態</th><th>通過人數</th><th>操作</th></tr></thead>
+            <tbody id="certification-list">
+              <tr data-status="active"><td>天車操作認證</td><td>機械操作</td><td>2 年</td><td>NT$ 500</td><td><span class="status active">啟用中</span></td><td>18</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="active"><td>堆高機操作認證</td><td>機械操作</td><td>2 年</td><td>NT$ 500</td><td><span class="status active">啟用中</span></td><td>22</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="active"><td>急救人員認證</td><td>安全衛生</td><td>3 年</td><td>NT$ 300</td><td><span class="status active">啟用中</span></td><td>27</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="active"><td>高空作業認證</td><td>安全衛生</td><td>2 年</td><td>NT$ 600</td><td><span class="status active">啟用中</span></td><td>24</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="discontinued"><td>舊式鋼爐操作認證</td><td>機械操作</td><td>2 年</td><td>NT$ 400</td><td><span class="status discontinued">已停產</span></td><td>6</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+              <tr data-status="discontinued"><td>輻射作業認證</td><td>特殊作業</td><td>2 年</td><td>NT$ 800</td><td><span class="status discontinued">已停產</span></td><td>3</td><td><button type="button" class="detail-button">編輯</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="result-count" class="result-count" aria-live="polite"></p>
+      </section>
+      <dialog id="certification-dialog"><form id="certification-form" method="dialog">
+        <h2 id="dialog-title">新增認證項目</h2><input id="edit-index" type="hidden">
+        <label>認證項目名稱<input id="certification-name" maxlength="40" required></label>
+        <label>認證類別<select id="certification-category" required><option value="">請選擇</option><option>機械操作</option><option>安全衛生</option><option>電氣</option><option>特殊作業</option><option>其他</option></select></label>
+        <div class="form-row"><label>效期（年）<input id="certification-years" type="number" min="1" max="20" required></label><label>每月加給（元）<input id="certification-allowance" type="number" min="0" step="100" required></label></div>
+        <label>項目狀態<select id="certification-status"><option value="active">啟用中</option><option value="discontinued">已停產</option></select></label>
+        <p id="form-error" class="form-error" aria-live="polite"></p>
+        <div class="dialog-actions"><button value="cancel" type="submit">取消</button><button id="save-certification" value="default" type="submit">儲存</button></div>
+      </form></dialog>
+    </main>
+  </body>
+</html>

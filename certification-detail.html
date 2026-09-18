@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>認證詳情｜人員認證管理系統</title>
+    <script src="../js/core/auth.js"></script>
+    <link rel="stylesheet" href="../css/pages/my-certifications.css">
+    <link rel="stylesheet" href="../css/pages/certification-detail.css">
+    <script src="../js/core/certification-demo.js" defer></script>
+    <script src="../js/pages/certification-detail.js" defer></script>
+  </head>
+  <body>
+    <main class="detail-page">
+      <header class="detail-header">
+        <a id="back-to-list" href="my-certifications.html">‹ 返回認證清單</a>
+        <h1>認證詳情</h1>
+      </header>
+      <p class="demo-note">示範資料 · 尚未連接公司認證紀錄，流程僅供前端展示。</p>
+      <section id="missing-record" class="detail-panel" hidden>
+        <h2>找不到這項認證</h2>
+        <p>請返回認證清單，重新選擇要查看的項目。</p>
+        <a href="my-certifications.html">返回認證清單</a>
+      </section>
+      <div id="record-content" hidden>
+        <section class="detail-panel record-summary" aria-labelledby="record-name">
+          <span id="record-status" class="record-badge"></span>
+          <h2 id="record-name"></h2>
+          <p id="record-description"></p>
+          <dl>
+            <div><dt>申請日期</dt><dd id="record-date"></dd></div>
+            <div><dt>目前階段</dt><dd id="record-stage"></dd></div>
+            <div><dt>負責人員</dt><dd>尚未提供</dd></div>
+            <div><dt>預計完成日期</dt><dd>尚未提供</dd></div>
+          </dl>
+        </section>
+        <div class="detail-columns">
+          <section class="detail-panel" aria-labelledby="progress-title">
+            <h2 id="progress-title">認證進度</h2>
+            <ol id="progress-list" class="detail-progress"></ol>
+          </section>
+          <section class="detail-panel" aria-labelledby="history-title">
+            <h2 id="history-title">處理紀錄</h2>
+            <ul id="history-list" class="detail-history"></ul>
+            <p class="record-help">新的審核結果與考核紀錄，將在串接後端後更新。</p>
+          </section>
+        </div>
+      </div>
+    </main>
+    <nav class="bottom-nav" aria-label="主要導覽">
+      <a href="home.html">首頁</a>
+      <a href="my-certifications.html" aria-current="page">認證</a>
+      <a href="question-bank.html">題庫</a>
+    </nav>
+  </body>
+</html>

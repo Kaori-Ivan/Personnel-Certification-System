@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <script src="../js/core/auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="審核已完成學科與術科考核的認證申請">
+    <title>審核中心｜人員認證管理系統</title>
+    <link rel="stylesheet" href="../css/pages/admin-personnel.css">
+    <link rel="stylesheet" href="../css/pages/admin-review.css">
+    <script src="../js/pages/admin-review.js" defer></script>
+  </head>
+  <body>
+    <aside class="admin-sidebar">
+      <header><strong>人員認證管理系統</strong><span>管理者後台</span></header>
+      <nav aria-label="管理後台選單">
+        <a href="admin-dashboard.html">首頁</a><a href="admin-personnel.html">人員管理</a>
+        <a href="admin-certifications.html">認證項目管理</a>
+        <a href="admin-review.html" aria-current="page">審核中心</a>
+       
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-header">
+        <div><h1>審核中心</h1><p>僅顯示學科與組長考核皆通過、等待最終審核的申請</p></div>
+        <button type="button">通知（2）</button><button type="button" data-logout>登出</button>
+      </header>
+      <form class="review-filter" role="search">
+        <label>搜尋<input id="review-search" type="search" placeholder="姓名、工號或認證項目"></label>
+        <label>部門<select id="department-filter"><option value="all">全部</option><option>機械課</option><option>電焊課</option><option>安環課</option></select></label>
+        <label>認證項目<select id="certification-filter"><option value="all">全部</option><option>高空作業認證</option><option>堆高機操作認證</option><option>電焊作業認證</option><option>急救人員認證</option></select></label>
+        <button id="reset-review" type="button">重設</button>
+      </form>
+      <section class="review-panel" aria-labelledby="review-title">
+        <div class="review-actions">
+          <div><h2 id="review-title">待審核清單</h2><p id="selection-message">尚未選取申請</p></div>
+          <button id="batch-approve" type="button" disabled>批次通過</button>
+          <button id="batch-reject" class="danger" type="button" disabled>批次駁回</button>
+        </div>
+        <p id="empty-review" class="empty-message" hidden>找不到符合條件的待審核申請。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th><input id="select-all" type="checkbox" aria-label="選取目前所有申請"></th><th>申請人</th><th>工號</th><th>部門</th><th>認證項目</th><th>學科</th><th>組長考核</th><th>操作</th></tr></thead>
+            <tbody id="review-list">
+              <tr><td><input class="row-check" type="checkbox" aria-label="選取王小明"></td><td>王小明</td><td>E2025001</td><td>機械課</td><td>高空作業認證</td><td><span class="pass">88 分／通過</span></td><td><span class="pass">張組長／通過</span></td><td><button class="review-button" type="button">檢視</button></td></tr>
+              <tr><td><input class="row-check" type="checkbox" aria-label="選取李大華"></td><td>李大華</td><td>E2025002</td><td>機械課</td><td>堆高機操作認證</td><td><span class="pass">92 分／通過</span></td><td><span class="pass">劉組長／通過</span></td><td><button class="review-button" type="button">檢視</button></td></tr>
+              <tr><td><input class="row-check" type="checkbox" aria-label="選取張志強"></td><td>張志強</td><td>E2025003</td><td>電焊課</td><td>電焊作業認證</td><td><span class="pass">85 分／通過</span></td><td><span class="pass">王組長／通過</span></td><td><button class="review-button" type="button">檢視</button></td></tr>
+              <tr><td><input class="row-check" type="checkbox" aria-label="選取陳小美"></td><td>陳小美</td><td>E2025004</td><td>安環課</td><td>急救人員認證</td><td><span class="pass">90 分／通過</span></td><td><span class="pass">林組長／通過</span></td><td><button class="review-button" type="button">檢視</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="review-count" class="result-count" aria-live="polite"></p>
+      </section>
+      <dialog id="review-dialog">
+        <form id="review-form" method="dialog">
+          <h2 id="dialog-title">審核申請</h2><p id="dialog-summary"></p>
+          <label id="reason-field" hidden>駁回原因<textarea id="reject-reason" rows="4" maxlength="200" placeholder="請輸入駁回原因"></textarea></label>
+          <p id="dialog-error" class="dialog-error" aria-live="polite"></p>
+          <div class="dialog-actions"><button value="cancel" type="submit">取消</button><button id="confirm-action" value="default" type="submit">確認</button></div>
+        </form>
+      </dialog>
+    </main>
+  </body>
+</html>
